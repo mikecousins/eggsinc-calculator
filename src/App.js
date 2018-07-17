@@ -12,8 +12,8 @@ class App extends Component {
     };
 
   render() {
-    let endingPopulation = this.state.currentChickens + (this.state.timeLeft * 60 * this.state.intHatcheryRate * 4 * 3);
-    let endingEggCount = this.state.currentEggs + ((this.state.currentChickens + endingPopulation) / 2 * this.state.timeLeft * 60 * this.state.eggLayingRate)
+    let endingPopulation = parseInt(this.state.currentChickens, 10) + (parseInt(this.state.timeLeft, 10) * 60 * parseInt(this.state.intHatcheryRate, 10) * 4 * 3);
+    let endingEggCount = parseInt(this.state.currentEggs, 10) + ((parseInt(this.state.currentChickens, 10) + endingPopulation) / 2 * parseInt(this.state.timeLeft, 10) * 60 * parseInt(this.state.eggLayingRate, 10))
     return (
       <div className="App">
         <header className="App-header">
@@ -36,8 +36,8 @@ class App extends Component {
           <label>Egg Laying Rate</label>
           <input type="text" value={this.state.eggLayingRate} onChange={e => this.setState({ eggLayingRate: e.target.value })} />
           <br />
-          <h3>Ending Chicken Count - {new Intl.NumberFormat().format(endingPopulation)}</h3>
-          <h3>Ending Egg Count - {new Intl.NumberFormat().format(endingEggCount)}</h3>
+          <b>Ending Chicken Count - {new Intl.NumberFormat().format(endingPopulation)}</b><br/>
+          <b>Ending Egg Count - {new Intl.NumberFormat().format(endingEggCount)}</b>
         </p>
       </div>
     );
