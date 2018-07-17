@@ -12,7 +12,8 @@ class App extends Component {
 
   render() {
     let endingPopulation = parseInt(this.state.currentChickens, 10) + (parseInt(this.state.timeLeft, 10) * 60 * parseInt(this.state.intHatcheryRate, 10) * 4 * 3);
-    let endingEggCount = parseInt(this.state.currentEggs, 10) + ((parseInt(this.state.currentChickens, 10) + endingPopulation) / 2 * parseInt(this.state.timeLeft, 10) * 60 * parseInt(this.state.eggLayingRate, 10))
+    const eggLayingRatePerChicken = this.state.eggLayingRate / this.state.currentChickens;
+    let endingEggCount = parseInt(this.state.currentEggs, 10) + ((parseInt(this.state.currentChickens, 10) + endingPopulation) / 2 * parseInt(this.state.timeLeft, 10) * 60 * eggLayingRatePerChicken);
     return (
       <div className="container mx-auto">
         <nav className="flex items-center justify-between flex-wrap bg-teal p-6">
@@ -41,15 +42,15 @@ class App extends Component {
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" type="text" value={this.state.currentEggs} onChange={e => this.setState({ currentEggs: e.target.value })} />
             </div>
             <div className="mb-4">
-              <label className="block text-grey-darker text-sm font-bold mb-2">Time Left</label>
+              <label className="block text-grey-darker text-sm font-bold mb-2">Time Left (hours)</label>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" type="text" value={this.state.timeLeft} onChange={e => this.setState({ timeLeft: e.target.value })} />
             </div>
             <div className="mb-4">
-              <label className="block text-grey-darker text-sm font-bold mb-2">Int Hatchery Rate</label>
+              <label className="block text-grey-darker text-sm font-bold mb-2">Int Hatchery Rate (chickens/min/hab)</label>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" type="text" value={this.state.intHatcheryRate} onChange={e => this.setState({ intHatcheryRate: e.target.value })} />
             </div>
             <div className="mb-4">
-              <label className="block text-grey-darker text-sm font-bold mb-2">Egg Laying Rate</label>
+              <label className="block text-grey-darker text-sm font-bold mb-2">Egg Laying Rate (eggs/minute)</label>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" type="text" value={this.state.eggLayingRate} onChange={e => this.setState({ eggLayingRate: e.target.value })} />
             </div>
         </form>
