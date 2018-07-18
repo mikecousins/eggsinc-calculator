@@ -1,7 +1,9 @@
+import Chart from 'chart.js';
 import React, { Component } from 'react';
+import ReactChartkick, { LineChart } from 'react-chartkick';
 import Header from './components/Header';
 import Number from './components/Number';
-
+ReactChartkick.addAdapter(Chart);
 class App extends Component {
   state = {
       currentPopulation: 0,
@@ -46,6 +48,11 @@ class App extends Component {
     const eggLayingRatePerChicken = eggLayingRate / currentPopulation;
     const endingEggCount = currentEggs + ((currentPopulation + endingPopulation) / 2 * timeLeft * 60 * eggLayingRatePerChicken);
     const endingEggRate = endingPopulation * eggLayingRatePerChicken;
+
+    // calculate our graphs
+    const eggCountGraph = [[0, currentEggs], [timeLeft / 2, (endingEggCount - currentEggs) / 4 + currentEggs], [timeLeft, endingEggCount]];
+    const populationGraph = [[0, currentPopulation], [timeLeft, endingPopulation]];
+    const eggRateGraph = [[0, eggLayingRate], [timeLeft, endingEggRate]];
 
     return (
       <div className="container mx-auto">
@@ -153,15 +160,18 @@ class App extends Component {
             </form>
           </div>
 
-          <div className="w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2">
-            <div className="bg-blue-lightest border-t-4 border-blue rounded-b text-blue-darkest px-4 py-3 shadow-md m-4" role="alert">
-              <p className="font-bold">Ending Egg Count - <Number value={endingEggCount} /></p>
+          <div className="flex flex-col w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2">
+            <div className="flex-1 bg-blue-lightest border-t-4 border-blue rounded-b text-blue-darkest px-4 py-3 m-2 shadow">
+              <p className="font-bold mb-2">Ending Egg Count - <Number value={endingEggCount} /></p>
+              <LineChart height="100px" data={eggCountGraph} ytitle="eggs" thousands="," />
             </div>
-            <div className="bg-teal-lightest border-t-4 border-teal rounded-b text-teal-darkest px-4 py-3 shadow-md m-4" role="alert">
-              <p className="font-bold">Ending Population - <Number value={endingPopulation} /></p>
+            <div className="flex-1 bg-teal-lightest border-t-4 border-teal rounded-b text-teal-darkest px-4 py-3 m-2 shadow">
+              <p className="font-bold mb-2">Ending Population - <Number value={endingPopulation} /></p>
+              <LineChart height="100px" data={populationGraph} ytitle="population" thousands="," />
             </div>
-            <div className="bg-green-lightest border-t-4 border-green rounded-b text-green-darkest px-4 py-3 shadow-md m-4" role="alert">
-              <p className="font-bold">Ending Egg Rate - <Number value={endingEggRate} /></p>
+            <div className="flex-1 bg-green-lightest border-t-4 border-green rounded-b text-green-darkest px-4 p-3 m-2 shadow">
+              <p className="font-bold mb-2">Ending Egg Rate - <Number value={endingEggRate} /></p>
+              <LineChart height="100px" data={eggRateGraph} ytitle="laying rate" thousands="," />
             </div>
           </div>
         </div>
