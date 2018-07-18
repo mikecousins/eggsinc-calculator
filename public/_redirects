@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+http://egginc.netlify.com/* http://egg.cousins.ai/:splat 301!
