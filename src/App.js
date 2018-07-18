@@ -44,23 +44,23 @@ class App extends Component {
     // calculate our results
     let endingPopulation = currentPopulation + (timeLeft * 60 * intHatcheryRate * 4 * calmResearch);
     const eggLayingRatePerChicken = eggLayingRate / currentPopulation;
-    let endingEggCount = currentEggs + ((currentPopulation + endingPopulation) / 2 * timeLeft * 60 * eggLayingRatePerChicken);
+    const endingEggCount = currentEggs + ((currentPopulation + endingPopulation) / 2 * timeLeft * 60 * eggLayingRatePerChicken);
+    const endingEggRate = endingPopulation * eggLayingRatePerChicken;
 
     return (
       <div className="container mx-auto">
 
-        <nav className="flex items-center justify-between flex-wrap bg-blue p-6">
+        <nav className="flex items-center justify-between flex-wrap bg-blue p-6 shadow-lg">
           <div className="flex items-center flex-no-shrink text-white mr-6">
             <svg className="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
             <span className="font-semibold text-xl tracking-tight">Egg, Inc - Contract Calculator</span>
           </div>
         </nav>
 
-        <div className="flex flex-wrap mb-4">
+        <div className="flex flex-wrap mb-4 shadow-lg">
 
-          <div className="w-full rounded overflow-hidden shadow-lg px-4 mt-4">
+          <div className="w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2 px-4 pt-4">
             <form className="w-full">
-              
               <div className="flex flex-wrap mb-4">
                 <label className="block text-grey-darker text-sm font-bold mb-2 w-full">Current Population</label>
                 <div className="w-3/4">
@@ -156,10 +156,9 @@ class App extends Component {
               </div>
 
             </form>
-            </div>
           </div>
 
-          <div className="w-full rounded overflow-hidden shadow-lg px-4 mb-4">
+          <div className="w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2">
             <div className="bg-blue-lightest border-t-4 border-blue rounded-b text-blue-darkest px-4 py-3 shadow-md m-4" role="alert">
               <div className="flex">
                 <div className="py-1">
@@ -167,13 +166,15 @@ class App extends Component {
                 </div>
                 <div>
                   <p className="font-bold">Ending Egg Count - <Number value={endingEggCount} /></p>
-                  <p className="text-sm">Ending Chicken Count - <Number value={endingPopulation} /></p>
+                  <p className="text-sm">Ending Population - <Number value={endingPopulation} /></p>
+                  <p className="text-sm">Ending Egg Rate - <Number value={endingEggRate} /></p>
                 </div>
               </div>
             </div>
 
           </div>
         </div>
+      </div>
     );
   }
 }
