@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import ReactChartkick, { LineChart } from 'react-chartkick';
 import Header from './components/Header';
 import Number from './components/Number';
+import { convertNumberToDisplayString, convertNumberToRaw } from './Utilities';
+
 ReactChartkick.addAdapter(Chart);
 class App extends Component {
   state = {
@@ -17,31 +19,14 @@ class App extends Component {
       calmResearch: 200,
     };
 
-  convertNumber = (number, unit) => {
-    const float = parseFloat(number);
-    switch (unit) {
-      default:
-      case '':
-        return float;
-      case 'k':
-        return float * 1000;
-      case 'M':
-        return float * 1000000;
-      case 'B':
-        return float * 1000000000;
-      case 'T':
-        return float * 1000000000000;
-    }
-  }
-
   render() {
     // get our inputs
-    const currentPopulation = this.convertNumber(this.state.currentPopulation, this.state.currentPopulationUnit);
-    const currentEggs = this.convertNumber(this.state.currentEggs, this.state.currentEggsUnit);
-    const timeLeft = this.convertNumber(this.state.timeLeft, '');
-    const intHatcheryRate = this.convertNumber(this.state.intHatcheryRate, '');
-    const eggLayingRate = this.convertNumber(this.state.eggLayingRate, this.state.eggLayingRateUnit);
-    const calmResearch = this.convertNumber(this.state.calmResearch, '') / 100 + 1;
+    const currentPopulation = convertNumberToRaw(this.state.currentPopulation, this.state.currentPopulationUnit);
+    const currentEggs = convertNumberToRaw(this.state.currentEggs, this.state.currentEggsUnit);
+    const timeLeft = convertNumberToRaw(this.state.timeLeft, '');
+    const intHatcheryRate = convertNumberToRaw(this.state.intHatcheryRate, '');
+    const eggLayingRate = convertNumberToRaw(this.state.eggLayingRate, this.state.eggLayingRateUnit);
+    const calmResearch = convertNumberToRaw(this.state.calmResearch, '') / 100 + 1;
 
     // calculate our results
     let endingPopulation = currentPopulation + (timeLeft * 60 * intHatcheryRate * 4 * calmResearch);
@@ -163,15 +148,57 @@ class App extends Component {
           <div className="flex flex-col w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2">
             <div className="flex-1 bg-blue-lightest border-t-4 border-blue rounded-b text-blue-darkest px-4 py-3 m-2 shadow">
               <p className="font-bold mb-2">Ending Egg Count - <Number value={endingEggCount} /></p>
-              <LineChart height="100px" data={eggCountGraph} ytitle="eggs" thousands="," />
+              <LineChart
+                height="100px"
+                data={eggCountGraph}
+                library={{
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        callback: (value) => {
+                          return convertNumberToDisplayString(value);
+                        }
+                      }
+                    }]
+                  }
+                }}
+              />
             </div>
             <div className="flex-1 bg-teal-lightest border-t-4 border-teal rounded-b text-teal-darkest px-4 py-3 m-2 shadow">
               <p className="font-bold mb-2">Ending Population - <Number value={endingPopulation} /></p>
-              <LineChart height="100px" data={populationGraph} ytitle="population" thousands="," />
+              <LineChart
+                height="100px"
+                data={populationGraph}
+                library={{
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        callback: (value) => {
+                          return convertNumberToDisplayString(value);
+                        }
+                      }
+                    }]
+                  }
+                }}
+              />
             </div>
             <div className="flex-1 bg-green-lightest border-t-4 border-green rounded-b text-green-darkest px-4 p-3 m-2 shadow">
               <p className="font-bold mb-2">Ending Egg Rate - <Number value={endingEggRate} /></p>
-              <LineChart height="100px" data={eggRateGraph} ytitle="laying rate" thousands="," />
+              <LineChart
+                height="100px"
+                data={eggRateGraph}
+                library={{
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        callback: (value) => {
+                          return convertNumberToDisplayString(value);
+                        }
+                      }
+                    }]
+                  }
+                }}
+              />
             </div>
           </div>
         </div>
