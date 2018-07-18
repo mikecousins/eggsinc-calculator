@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import { Persist } from 'formik-persist';
 import React from 'react';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Label from './components/Label';
 import Result from './components/Result';
@@ -52,7 +53,7 @@ const App = () => (
         const eggRateGraph = [[0, eggLayingRate], [timeLeft, endingEggRate]];
 
         return (
-          <div className="flex flex-wrap mb-4 shadow-lg">
+          <div className="flex flex-wrap shadow">
             <Persist name="egg-inc" />
             <div className="w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2 px-4 pt-4">
               <form className="w-full">
@@ -146,6 +147,7 @@ const App = () => (
           </div>
       );}}
     />
+    <Footer />
   </div>
 );
 
