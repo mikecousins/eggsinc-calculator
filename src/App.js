@@ -57,7 +57,7 @@ const App = () => (
             <div className="w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2 px-4 pt-4">
               <form className="w-full">
                 <div className="flex flex-wrap mb-4">
-                  <Label>Current Population</Label>
+                  <Label htmlFor="currentPopulation">Current Population</Label>
                   <div className="w-3/4">
                     <TextInput name="currentPopulation" value={values.currentPopulation} onChange={handleChange} />
                   </div>
@@ -76,7 +76,7 @@ const App = () => (
                 </div>
 
                 <div className="flex flex-wrap mb-4">
-                  <Label>Current Eggs</Label>
+                  <Label htmlFor="currentEggs">Current Eggs</Label>
                   <div className="w-3/4">
                     <TextInput name="currentEggs" value={values.currentEggs} onChange={handleChange} />
                   </div>
@@ -96,12 +96,12 @@ const App = () => (
                 </div>
 
                 <div className="mb-4">
-                  <Label>Time Left (hours)</Label>
+                  <Label htmlFor="timeLeft">Time Left (hours)</Label>
                   <TextInput name="timeLeft" value={values.timeLeft} onChange={handleChange} />
                 </div>
 
                 <div className="flex flex-wrap mb-4">
-                  <Label>Egg Laying Rate (eggs/minute)</Label>
+                  <Label htmlFor="eggLayingRate">Egg Laying Rate (eggs/minute)</Label>
                   <div className="w-3/4">
                     <TextInput name="eggLayingRate" value={values.eggLayingRate} onChange={handleChange} />
                   </div>
@@ -120,12 +120,12 @@ const App = () => (
                 </div>
 
                 <div className="mb-4">
-                  <Label>Int Hatchery Rate (chickens/min/hab)</Label>
+                  <Label htmlFor="intHatcheryRate">Int Hatchery Rate (chickens/min/hab)</Label>
                   <TextInput name="intHatcheryRate" value={values.intHatcheryRate} onChange={handleChange} />
                 </div>
 
                 <div className="mb-4">
-                  <Label>Epic Internal Hatchery Calm Research (%)</Label>
+                  <Label htmlFor="calmResearch">Epic Internal Hatchery Calm Research (%)</Label>
                   <TextInput name="calmResearch" value={values.calmResearch} onChange={handleChange} />
                 </div>
 
