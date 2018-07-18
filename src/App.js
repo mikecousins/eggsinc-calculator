@@ -155,18 +155,14 @@ class App extends Component {
 
           <div className="w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2">
             <div className="bg-blue-lightest border-t-4 border-blue rounded-b text-blue-darkest px-4 py-3 shadow-md m-4" role="alert">
-              <div className="flex">
-                <div className="py-1">
-                  <svg className="fill-current h-6 w-6 text-blue mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg>
-                </div>
-                <div>
-                  <p className="font-bold">Ending Egg Count - <Number value={endingEggCount} /></p>
-                  <p className="text-sm">Ending Population - <Number value={endingPopulation} /></p>
-                  <p className="text-sm">Ending Egg Rate - <Number value={endingEggRate} /></p>
-                </div>
-              </div>
+              <p className="font-bold">Ending Egg Count - <Number value={endingEggCount} /></p>
             </div>
-
+            <div className="bg-teal-lightest border-t-4 border-teal rounded-b text-teal-darkest px-4 py-3 shadow-md m-4" role="alert">
+              <p className="font-bold">Ending Population - <Number value={endingPopulation} /></p>
+            </div>
+            <div className="bg-green-lightest border-t-4 border-green rounded-b text-green-darkest px-4 py-3 shadow-md m-4" role="alert">
+              <p className="font-bold">Ending Egg Rate - <Number value={endingEggRate} /></p>
+            </div>
           </div>
         </div>
       </div>
