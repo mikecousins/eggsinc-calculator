@@ -6,6 +6,7 @@
     "chart.js": "^2.7.2",
     "formik": "^1.0.1",
     "formik-persist": "^1.0.0",
+    "lodash.isequal": "^4.5.0",
     "react": "^16.4.1",
     "react-chartkick": "^0.2.1",
     "react-dom": "^16.4.1",

@@ -28,7 +28,7 @@ const Result = (props) => (
   </React.Fragment>
 );
 
-Result.PropTypes = {
+Result.propTypes = {
   title: PropTypes.string,
   value: PropTypes.number,
   data: PropTypes.array,
