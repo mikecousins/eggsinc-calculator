@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Label from './components/Label';
 import Result from './components/Result';
+import Select from './components/Select';
 import TextInput from './components/TextInput';
 import { convertNumberToRaw } from './Utilities';
 
@@ -53,8 +54,7 @@ class App extends Component {
                   <TextInput value={this.state.currentPopulation} onChange={e => this.setState({ currentPopulation: e.target.value })} />
                 </div>
                 <div className="w-1/4 inline-block relative">
-                  <select
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                  <Select
                     value={this.state.currentPopulationUnit}
                     onChange={e => this.setState({ currentPopulationUnit: e.target.value })}
                   >
@@ -62,12 +62,7 @@ class App extends Component {
                     <option>k</option>
                     <option>M</option>
                     <option>B</option>
-                  </select>
-                  <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                    </svg>
-                  </div>
+                  </Select>
                 </div>
               </div>
 
@@ -77,8 +72,7 @@ class App extends Component {
                   <TextInput value={this.state.currentEggs} onChange={e => this.setState({ currentEggs: e.target.value })} />
                 </div>
                 <div className="w-1/4 inline-block relative">
-                  <select
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                  <Select
                     value={this.state.currentEggsUnit}
                     onChange={e => this.setState({ currentEggsUnit: e.target.value })}
                   >
@@ -87,10 +81,7 @@ class App extends Component {
                     <option>M</option>
                     <option>B</option>
                     <option>T</option>
-                  </select>
-                  <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                  </div>
+                  </Select>
                 </div>
               </div>
 
@@ -105,8 +96,7 @@ class App extends Component {
                   <TextInput value={this.state.eggLayingRate} onChange={e => this.setState({ eggLayingRate: e.target.value })} />
                 </div>
                 <div className="w-1/4 inline-block relative">
-                  <select
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                  <Select
                     value={this.state.eggLayingRateUnit}
                     onChange={e => this.setState({ eggLayingRateUnit: e.target.value })}
                   >
@@ -114,10 +104,7 @@ class App extends Component {
                     <option>k</option>
                     <option>M</option>
                     <option>B</option>
-                  </select>
-                  <div className="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                  </div>
+                  </Select>
                 </div>
               </div>
 
