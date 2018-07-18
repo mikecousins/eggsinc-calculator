@@ -1,11 +1,10 @@
-import Chart from 'chart.js';
 import React, { Component } from 'react';
-import ReactChartkick, { LineChart } from 'react-chartkick';
 import Header from './components/Header';
-import Number from './components/Number';
-import { convertNumberToDisplayString, convertNumberToRaw } from './Utilities';
+import Label from './components/Label';
+import Result from './components/Result';
+import TextInput from './components/TextInput';
+import { convertNumberToRaw } from './Utilities';
 
-ReactChartkick.addAdapter(Chart);
 class App extends Component {
   state = {
       currentPopulation: 0,
@@ -49,14 +48,9 @@ class App extends Component {
           <div className="w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2 px-4 pt-4">
             <form className="w-full">
               <div className="flex flex-wrap mb-4">
-                <label className="block text-grey-darker text-sm font-bold mb-2 w-full">Current Population</label>
+                <Label>Current Population</Label>
                 <div className="w-3/4">
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight"
-                    type="text"
-                    value={this.state.currentPopulation}
-                    onChange={e => this.setState({ currentPopulation: e.target.value })}
-                  />
+                  <TextInput value={this.state.currentPopulation} onChange={e => this.setState({ currentPopulation: e.target.value })} />
                 </div>
                 <div className="w-1/4 inline-block relative">
                   <select
@@ -78,14 +72,9 @@ class App extends Component {
               </div>
 
               <div className="flex flex-wrap mb-4">
-                <label className="block text-grey-darker text-sm font-bold mb-2 w-full">Current Eggs</label>
+                <Label>Current Eggs</Label>
                 <div className="w-3/4">
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight"
-                    type="text"
-                    value={this.state.currentEggs}
-                    onChange={e => this.setState({ currentEggs: e.target.value })}
-                  />
+                  <TextInput value={this.state.currentEggs} onChange={e => this.setState({ currentEggs: e.target.value })} />
                 </div>
                 <div className="w-1/4 inline-block relative">
                   <select
@@ -106,14 +95,14 @@ class App extends Component {
               </div>
 
               <div className="mb-4">
-                <label className="block text-grey-darker text-sm font-bold mb-2">Time Left (hours)</label>
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" type="text" value={this.state.timeLeft} onChange={e => this.setState({ timeLeft: e.target.value })} />
+                <Label>Time Left (hours)</Label>
+                <TextInput value={this.state.timeLeft} onChange={e => this.setState({ timeLeft: e.target.value })} />
               </div>
 
               <div className="flex flex-wrap mb-4">
-                <label className="block text-grey-darker text-sm font-bold mb-2 w-full">Egg Laying Rate (eggs/minute)</label>
+                <Label>Egg Laying Rate (eggs/minute)</Label>
                 <div className="w-3/4">
-                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" type="text" value={this.state.eggLayingRate} onChange={e => this.setState({ eggLayingRate: e.target.value })} />
+                  <TextInput value={this.state.eggLayingRate} onChange={e => this.setState({ eggLayingRate: e.target.value })} />
                 </div>
                 <div className="w-1/4 inline-block relative">
                   <select
@@ -133,13 +122,13 @@ class App extends Component {
               </div>
 
               <div className="mb-4">
-                <label className="block text-grey-darker text-sm font-bold mb-2 w-full">Int Hatchery Rate (chickens/min/hab)</label>
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" type="text" value={this.state.intHatcheryRate} onChange={e => this.setState({ intHatcheryRate: e.target.value })} />
+                <Label>Int Hatchery Rate (chickens/min/hab)</Label>
+                <TextInput value={this.state.intHatcheryRate} onChange={e => this.setState({ intHatcheryRate: e.target.value })} />
               </div>
 
               <div className="mb-4">
-                <label className="block text-grey-darker text-sm font-bold mb-2 w-full">Epic Internal Hatchery Calm Research (%)</label>
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" type="text" value={this.state.calmResearch} onChange={e => this.setState({ calmResearch: e.target.value })} />
+                <Label>Epic Internal Hatchery Calm Research (%)</Label>
+                <TextInput value={this.state.calmResearch} onChange={e => this.setState({ calmResearch: e.target.value })} />
               </div>
 
             </form>
@@ -147,58 +136,13 @@ class App extends Component {
 
           <div className="flex flex-col w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2">
             <div className="flex-1 bg-blue-lightest border-t-4 border-blue rounded-b text-blue-darkest px-4 py-3 m-2 shadow">
-              <p className="font-bold mb-2">Ending Egg Count - <Number value={endingEggCount} /></p>
-              <LineChart
-                height="100px"
-                data={eggCountGraph}
-                library={{
-                  scales: {
-                    yAxes: [{
-                      ticks: {
-                        callback: (value) => {
-                          return convertNumberToDisplayString(value);
-                        }
-                      }
-                    }]
-                  }
-                }}
-              />
+              <Result title="Ending Egg Count" value={endingEggCount} data={eggCountGraph} />
             </div>
             <div className="flex-1 bg-teal-lightest border-t-4 border-teal rounded-b text-teal-darkest px-4 py-3 m-2 shadow">
-              <p className="font-bold mb-2">Ending Population - <Number value={endingPopulation} /></p>
-              <LineChart
-                height="100px"
-                data={populationGraph}
-                library={{
-                  scales: {
-                    yAxes: [{
-                      ticks: {
-                        callback: (value) => {
-                          return convertNumberToDisplayString(value);
-                        }
-                      }
-                    }]
-                  }
-                }}
-              />
+              <Result title="Ending Population" value={endingPopulation} data={populationGraph} />
             </div>
             <div className="flex-1 bg-green-lightest border-t-4 border-green rounded-b text-green-darkest px-4 p-3 m-2 shadow">
-              <p className="font-bold mb-2">Ending Egg Rate - <Number value={endingEggRate} /></p>
-              <LineChart
-                height="100px"
-                data={eggRateGraph}
-                library={{
-                  scales: {
-                    yAxes: [{
-                      ticks: {
-                        callback: (value) => {
-                          return convertNumberToDisplayString(value);
-                        }
-                      }
-                    }]
-                  }
-                }}
-              />
+              <Result title="Ending Egg Rate" value={endingEggRate} data={eggRateGraph} />
             </div>
           </div>
         </div>
