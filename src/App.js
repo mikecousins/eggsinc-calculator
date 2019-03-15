@@ -32,7 +32,6 @@ const App = () => (
         render={({
           values,
           handleChange,
-          setFieldValue,
         }) => {
           // get our inputs
           const currentPopulation = convertNumberToRaw(values.currentPopulation, values.currentPopulationUnit);
@@ -54,9 +53,10 @@ const App = () => (
           const eggRateGraph = [[0, eggLayingRate], [timeLeft, endingEggRate]];
 
           return (
-            <div className="flex flex-wrap shadow">
+            <div className="flex flex-wrap shadow mb-4">
               <Persist name="egg-inc" />
               <div className="w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2 px-4 pt-4">
+                <div className="text-3xl mb-4">Solo</div>
                 <form className="w-full">
                   <div className="flex flex-wrap mb-4">
                     <Label htmlFor="currentPopulation">Current Population</Label>
@@ -93,6 +93,7 @@ const App = () => (
                         <option>M</option>
                         <option>B</option>
                         <option>T</option>
+                        <option>q</option>
                       </Select>
                     </div>
                   </div>
@@ -143,6 +144,82 @@ const App = () => (
                 </div>
                 <div className="flex-1 bg-green-lightest border-t-4 border-green rounded-b text-green-darkest px-4 p-3 m-2 shadow">
                   <Result title="Ending Egg Rate" value={endingEggRate} data={eggRateGraph} />
+                </div>
+              </div>
+            </div>
+        );}}
+      />
+      <Formik
+        initialValues={{
+          daysDuration: 0,
+          timeLeft: 0,
+          currentEggs: 0,
+          currentEggsUnit: '',
+        }}
+        validate={(values) => {
+          const errors = {};
+          return errors;
+        }}
+        render={({
+          values,
+          handleChange,
+        }) => {
+          // get our inputs
+          const currentEggs = convertNumberToRaw(values.currentEggs, values.currentEggsUnit);
+          const timeLeft = convertNumberToRaw(values.timeLeft, '');
+          const duration = convertNumberToRaw(values.daysDuration * 24, '');
+
+          // calculate our results
+          const time = duration - timeLeft;
+          const x = currentEggs / (time * time);
+          const endingEggCount = duration * duration * x;
+
+          // calculate our graphs
+          const eggCountGraph = [[0, 0], [duration / 2, endingEggCount / 4], [duration, endingEggCount]];
+
+          return (
+            <div className="flex flex-wrap shadow">
+              <Persist name="egg-inc-group" />
+              <div className="w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2 px-4 pt-4">
+                <div className="text-3xl mb-4">Group</div>
+                <form className="w-full">
+                  <div className="mb-4">
+                    <Label htmlFor="currentPopulation">Duration (days)</Label>
+                    <TextInput name="daysDuration" value={values.daysDuration} onChange={handleChange} />
+                  </div>
+
+                  <div className="flex flex-wrap mb-4">
+                    <Label htmlFor="currentEggs">Current Eggs</Label>
+                    <div className="w-3/4">
+                      <TextInput name="currentEggs" value={values.currentEggs} onChange={handleChange} />
+                    </div>
+                    <div className="w-1/4 inline-block relative">
+                      <Select
+                        name="currentEggsUnit"
+                        value={values.currentEggsUnit}
+                        onChange={handleChange}
+                      >
+                        <option></option>
+                        <option>k</option>
+                        <option>M</option>
+                        <option>B</option>
+                        <option>T</option>
+                        <option>q</option>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <Label htmlFor="timeLeft">Time Left (hours)</Label>
+                    <TextInput name="timeLeft" value={values.timeLeft} onChange={handleChange} />
+                  </div>
+
+                </form>
+              </div>
+
+              <div className="flex flex-col w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2">
+                <div className="flex-1 bg-blue-lightest border-t-4 border-blue rounded-b text-blue-darkest px-4 py-3 m-2 shadow">
+                  <Result title="Ending Egg Count" value={endingEggCount} data={eggCountGraph} />
                 </div>
               </div>
             </div>

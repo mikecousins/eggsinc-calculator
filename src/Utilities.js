@@ -1,9 +1,12 @@
 const convertNumberToDisplayString = (value) => {
+  const quadrillion = 1000000000000000;
   const trillion = 1000000000000;
   const billion = 1000000000;
   const million = 1000000;
   const thousand = 1000;
-  if (value / trillion >= 1) {
+  if (value / quadrillion >= 1) {
+    return `${(value / quadrillion).toFixed(1)}Q`;
+  } else if (value / trillion >= 1) {
     return `${(value / trillion).toFixed(1)}T`;
   } else if (value / billion >= 1) {
     return `${(value / billion).toFixed(1)}B`;
@@ -30,6 +33,8 @@ const convertNumberToRaw = (number, unit) => {
       return float * 1000000000;
     case 'T':
       return float * 1000000000000;
+    case 'q':
+      return float * 1000000000000000;
   }
 }
 
