@@ -136,13 +136,13 @@ const App = () => (
               </div>
 
               <div className="flex flex-col w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2">
-                <div className="flex-1 bg-blue-lightest border-t-4 border-blue rounded-b text-blue-darkest px-4 py-3 m-2 shadow">
+                <div className="flex-1 bg-blue-100 border-t-4 border-blue rounded-b text-blue-600 px-4 py-3 m-2 shadow">
                   <Result title="Ending Egg Count" value={endingEggCount} data={eggCountGraph} />
                 </div>
-                <div className="flex-1 bg-teal-lightest border-t-4 border-teal rounded-b text-teal-darkest px-4 py-3 m-2 shadow">
+                <div className="flex-1 bg-teal-100 border-t-4 border-teal rounded-b text-teal-600 px-4 py-3 m-2 shadow">
                   <Result title="Ending Population" value={endingPopulation} data={populationGraph} />
                 </div>
-                <div className="flex-1 bg-green-lightest border-t-4 border-green rounded-b text-green-darkest px-4 p-3 m-2 shadow">
+                <div className="flex-1 bg-green-100 border-t-4 border-green rounded-b text-green-600 px-4 p-3 m-2 shadow">
                   <Result title="Ending Egg Rate" value={endingEggRate} data={eggRateGraph} />
                 </div>
               </div>
@@ -218,7 +218,7 @@ const App = () => (
               </div>
 
               <div className="flex flex-col w-full xm:w-full md:-w-full lg:w-1/2 xl:w-1/2">
-                <div className="flex-1 bg-blue-lightest border-t-4 border-blue rounded-b text-blue-darkest px-4 py-3 m-2 shadow">
+                <div className="flex-1 bg-blue-100 border-t-4 border-blue rounded-b text-blue-600 px-4 py-3 m-2 shadow">
                   <Result title="Ending Egg Count" value={endingEggCount} data={eggCountGraph} />
                 </div>
               </div>
