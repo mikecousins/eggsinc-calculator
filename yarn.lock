@@ -2629,7 +2629,7 @@ chartjs-color@^2.1.0:
     chartjs-color-string "^0.5.0"
     color-convert "^0.5.3"
 
-chartkick@^3.1.0:
+chartkick@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/chartkick/-/chartkick-3.1.1.tgz#c0ac91383f7c3a05dc67493b5c7f4a1469c87878"
   integrity sha512-7M8VR99o0W0feas1HP/yc7pXnZElqNn2V6RMEU2TfYr/Emb5PMIL4GeuNbui8idaZ0en29cz5cbynuRcAFieDA==
@@ -8094,12 +8094,12 @@ react-app-polyfill@^1.0.1:
     regenerator-runtime "0.13.2"
     whatwg-fetch "3.0.0"
 
-react-chartkick@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/react-chartkick/-/react-chartkick-0.3.1.tgz#97bed228cf4bfc013d6478989ce92c93a02938ea"
-  integrity sha512-kQY0/AYcaBp1bCDPrVhpXmyeOK0xT45WGscXTQqjSn7hLKxoSQn0INya8Tx6q0WUmI6C3aaxi9L3n0uxU8Atsg==
+react-chartkick@0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-chartkick/-/react-chartkick-0.3.2.tgz#c57785258424dae19b77836c92136841656ba28c"
+  integrity sha512-IhBhgg+UfAurwZB7kzhu4UF6GjJso5XOe/XZmTVDzqTVrahbTCMaM8bY2VzGl3A/BmqZ3S/38vyiPDvxtOJ/tg==
   dependencies:
-    chartkick "^3.1.0"
+    chartkick "^3.1.1"
 
 react-dev-utils@^9.0.1:
   version "9.0.1"
