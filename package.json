@@ -9,7 +9,7 @@
     "lodash.isequal": "4.5.0",
     "react": "16.9.0",
     "react-chartkick": "0.3.2",
-    "react-dom": "16.9.0",
+    "react-dom": "16.10.1",
     "react-scripts": "3.1.2"
   },
   "scripts": {
