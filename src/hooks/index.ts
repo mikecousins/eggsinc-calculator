@@ -73,7 +73,7 @@ const artifacts = [
       id: 5,
       count: 5,
     }, {
-      id: 9,
+      id: 113,
       count: 1,
     }],
   },
@@ -85,6 +85,13 @@ const artifacts = [
     rareEffect: "+52% drone rewards",
     epicEffect: "+54% drone rewards",
     legendaryEffect: "+56% drone rewards",
+    ingredients: [{
+      id: 6,
+      count: 6,
+    }, {
+      id: 111,
+      count: 3,
+    }],
   },
   {
     id: 8,
@@ -107,14 +114,14 @@ const artifacts = [
   },
   {
     id: 10,
-    name: "Jeweled Beak of Midas",
+    name: "Ornate Carved Rainstick",
     type: ArtifactType.ARTIFACT,
     effect: "2x chance of gold in gifts and drones",
     rareEffect: "3x chance of gold in gifts and drones",
     epicEffect: "+54% drone rewards",
     legendaryEffect: "+56% drone rewards",
     ingredients: [{
-      id: 5,
+      id: 9,
       count: 5,
     }, {
       id: 9,
@@ -123,7 +130,7 @@ const artifacts = [
   },
   {
     id: 11,
-    name: "Glistening Beak of Midas",
+    name: "Magnificent Carved Rainstick",
     type: ArtifactType.ARTIFACT,
     effect: "5x chance of gold in gifts and drones",
     rareEffect: "+52% drone rewards",
@@ -145,8 +152,11 @@ const artifacts = [
     epicEffect: "+54% drone rewards",
     legendaryEffect: "+56% drone rewards",
     ingredients: [{
-      id: 4,
+      id: 12,
       count: 4,
+    }, {
+      id: 110,
+      count: 1,
     }],
   },
   {
@@ -307,9 +317,67 @@ const artifacts = [
     legendaryEffect: "+56% drone rewards",
   },
   {
+    id: 28,
+    name: "Miscalibrated Interstellar Compass",
+    type: ArtifactType.ARTIFACT,
+    effect: "+5% shipping rate"
+  },
+  {
+    id: 29,
+    name: "Interstellar Compass",
+    type: ArtifactType.ARTIFACT,
+    effect: "+10% shipping rate",
+    rareEffect: "+??% shipping rate",
+    epicEffect: "+??% shipping rate",
+    legendaryEffect: "+??% shipping rate",
+    ingredients: [{
+      id: 28,
+      count: 4,
+    }],
+  },
+  {
+    id: 30,
+    name: "Precise Interstellar Compass",
+    type: ArtifactType.ARTIFACT,
+    effect: "+20% shipping rate",
+    rareEffect: "+??% shipping rate",
+    epicEffect: "+??% shipping rate",
+    legendaryEffect: "+??% shipping rate",
+    ingredients: [{
+      id: 5,
+      count: 5,
+    }, {
+      id: 9,
+      count: 1,
+    }],
+  },
+  {
+    id: 31,
+    name: "Clairvoyant Interstellar Compass",
+    type: ArtifactType.ARTIFACT,
+    effect: "+??% shipping rate",
+    rareEffect: "+??% shipping rate",
+    epicEffect: "+??% shipping rate",
+    legendaryEffect: "+??% shipping rate",
+  },
+  {
     id: 100,
     name: "Misaligned Mercury's Lens",
     type: ArtifactType.ARTIFACT,
+  },
+  {
+    id: 110,
+    name: "Enriched Gold Meteorite",
+    type: ArtifactType.INGREDIENT,
+  },
+  {
+    id: 111,
+    name: "Solid Gold Meteorite",
+    type: ArtifactType.INGREDIENT,
+    ingredients: [{
+      id: 110,
+      count: 11,
+    }],
   },
   {
     id: 113,
