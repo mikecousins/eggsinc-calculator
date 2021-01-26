@@ -28,6 +28,7 @@ export enum Family {
   VIAL_OF_MARTIAN_DUST,
   GOLD_METEORITE,
   TAU_CETI_GEODE,
+  SOLAR_TITANIUM,
 }
 
 type Component = {
@@ -110,11 +111,23 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: '',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.BEAK_OF_MIDAS,
+        level: 0,
+        count: 4,
+      }],
     }, {
       prefix: 'Jeweled',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.BEAK_OF_MIDAS,
+        level: 1,
+        count: 5,
+      }, {
+        family: Family.TAU_CETI_GEODE,
+        level: 1,
+        count: 1,
+      }],
     }, {
       prefix: 'Glistening',
       effectPrefix: [],
@@ -151,15 +164,23 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "+20% chance of gold in gifts and drones",
     levels: [{
       prefix: 'Simple',
-      effectPrefix: [],
+      effectPrefix: ['+20%'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
-      components: [],
+      effectPrefix: ['+50%'],
+      components: [{
+        family: Family.CARVED_RAINSTICK,
+        level: 0,
+        count: 5,
+      }, {
+        family: Family.GUSSET,
+        level: 0,
+        count: 1,
+      }],
     }, {
       prefix: 'Ornate',
-      effectPrefix: [],
+      effectPrefix: ['2x'],
       components: [],
     }, {
       prefix: 'Meggnificent',
@@ -241,15 +262,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "boost effectiveness",
     levels: [{
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+5%'],
       components: [],
     }, {
       prefix: 'Precise',
-      effectPrefix: [],
+      effectPrefix: ['+10%'],
       components: [],
     }, {
       prefix: 'Eggsacting',
-      effectPrefix: [],
+      effectPrefix: ['+14%'],
       components: [],
     }, {
       prefix: 'Flawless',
@@ -264,16 +285,28 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "habitat capacity",
     levels: [{
       prefix: 'Plain',
-      effectPrefix: [],
+      effectPrefix: ['+5%'],
       components: [],
     }, {
       prefix: 'Ornate',
-      effectPrefix: [],
-      components: [],
+      effectPrefix: ['+10%', '+11%', '+12%', '+13%'],
+      components: [{
+        family: Family.GUSSET,
+        level: 0,
+        count: 5,
+      }],
     }, {
       prefix: 'Distegguished',
-      effectPrefix: [],
-      components: [],
+      effectPrefix: ['+14%', '+15%'],
+      components: [{
+        family: Family.GUSSET,
+        level: 1,
+        count: 6
+      }, {
+        family: Family.MERCURYS_LENS,
+        level: 1,
+        count: 2,
+      }],
     }, {
       prefix: 'Jeweled',
       effectPrefix: [],
@@ -287,15 +320,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "shipping rate",
     levels: [{
       prefix: 'Miscalibrated',
-      effectPrefix: [],
+      effectPrefix: ['+5%'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+10%'],
       components: [],
     }, {
       prefix: 'Precise',
-      effectPrefix: [],
+      effectPrefix: ['+20%'],
       components: [],
     }, {
       prefix: 'Clairvoyant',
@@ -310,11 +343,11 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "enlightenment egg value",
     levels: [{
       prefix: 'Dim',
-      effectPrefix: [],
+      effectPrefix: ['+50%'],
       components: [],
     }, {
       prefix: 'Shimmering',
-      effectPrefix: [],
+      effectPrefix: ['2x'],
       components: [],
     }, {
       prefix: 'Glowing',
@@ -333,20 +366,36 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "away earnings",
     levels: [{
       prefix: 'Basic',
-      effectPrefix: [],
+      effectPrefix: ['+50%'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
-      components: [],
+      effectPrefix: ['2x', '2.5x'],
+      components: [{
+        family: Family.LUNAR_TOTEM,
+        level: 0,
+        count: 3,
+      }],
     }, {
       prefix: 'Powerful',
-      effectPrefix: [],
-      components: [],
+      effectPrefix: ['4x', '5x'],
+      components: [{
+        family: Family.LUNAR_TOTEM,
+        level: 1,
+        count: 6,
+      }],
     }, {
       prefix: 'Eggceptional',
-      effectPrefix: [],
-      components: [],
+      effectPrefix: ['6x'],
+      components: [{
+        family: Family.LUNAR_TOTEM,
+        level: 2,
+        count: 6,
+      }, {
+        family: Family.SOLAR_TITANIUM,
+        level: 1,
+        count: 1,
+      }],
     }],
   },
   {
@@ -356,15 +405,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "farm value",
     levels: [{
       prefix: 'Misaligned',
-      effectPrefix: [],
+      effectPrefix: ['+10%'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+20%', '+22%'],
       components: [],
     }, {
       prefix: 'Precise',
-      effectPrefix: [],
+      effectPrefix: ['+50%', '+55%'],
       components: [],
     }, {
       prefix: 'Meggnificent',
@@ -379,19 +428,19 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "drone frequency",
     levels: [{
       prefix: 'Weak',
-      effectPrefix: [],
+      effectPrefix: ['+10%'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+25%', '+30%'],
       components: [],
     }, {
       prefix: 'Precise',
-      effectPrefix: [],
+      effectPrefix: ['+50%'],
       components: [],
     }, {
       prefix: 'Eggceptional',
-      effectPrefix: [],
+      effectPrefix: ['2x'],
       components: [],
     }],
   },
@@ -402,15 +451,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "soul egg collection rate",
     levels: [{
       prefix: 'Tattered',
-      effectPrefix: [],
+      effectPrefix: ['+25%'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['2x'],
       components: [],
     }, {
       prefix: 'Brilliant',
-      effectPrefix: [],
+      effectPrefix: ['5x'],
       components: [],
     }, {
       prefix: 'Blazing',
@@ -434,11 +483,27 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: 'Mystical',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.PUZZLE_CUBE,
+        level: 1,
+        count: 6,
+      }, {
+        family: Family.GUSSET,
+        level: 0,
+        count: 2,
+      }],
     }, {
       prefix: 'Unsolvable',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.PUZZLE_CUBE,
+        level: 2,
+        count: 10,
+      }, {
+        family: Family.GOLD_METEORITE,
+        level: 2,
+        count: 2,
+      }],
     }],
   },
   {
@@ -448,15 +513,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "egg laying rate",
     levels: [{
       prefix: 'Misaligned',
-      effectPrefix: [],
+      effectPrefix: ['+5%'],
       components: [],
     }, {
       prefix: 'Adequate',
-      effectPrefix: [],
+      effectPrefix: ['+10%'],
       components: [],
     }, {
       prefix: 'Perfect',
-      effectPrefix: [],
+      effectPrefix: ['+14%'],
       components: [],
     }, {
       prefix: 'Reggference',
@@ -471,11 +536,11 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "co-op teammates' earnings",
     levels: [{
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+20%'],
       components: [],
     }, {
       prefix: 'Detailed',
-      effectPrefix: [],
+      effectPrefix: ['+30%'],
       components: [],
     }, {
       prefix: 'Complex',
@@ -494,11 +559,11 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "co-op teammates' egg laying rate",
     levels: [{
       prefix: 'Weak',
-      effectPrefix: [],
+      effectPrefix: ['+5%'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+8%'],
       components: [],
     }, {
       prefix: 'Robust',
@@ -517,11 +582,11 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "hold to hatch rate",
     levels: [{
       prefix: 'Inconsistent',
-      effectPrefix: [],
+      effectPrefix: ['+1'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+4'],
       components: [],
     }, {
       prefix: 'Precise',
@@ -540,16 +605,28 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "egg value",
     levels: [{
       prefix: 'Crude',
-      effectPrefix: [],
+      effectPrefix: ['+10%'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
-      components: [],
+      effectPrefix: ['+25%', '+28%'],
+      components: [{
+        family: Family.TUNGSTEN_ANKH,
+        level: 0,
+        count: 6,
+      }],
     }, {
       prefix: 'Polished',
-      effectPrefix: [],
-      components: [],
+      effectPrefix: ['+50%', '+75%'],
+      components: [{
+        family: Family.TUNGSTEN_ANKH,
+        level: 1,
+        count: 7,
+      }, {
+        family: Family.SOLAR_TITANIUM,
+        level: 1,
+        count: 2,
+      }],
     }, {
       prefix: 'Brilliant',
       effectPrefix: [],
@@ -568,11 +645,23 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: '',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.VIAL_OF_MARTIAN_DUST,
+        level: 0,
+        count: 5,
+      }],
     }, {
       prefix: 'Hermetic',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.VIAL_OF_MARTIAN_DUST,
+        level: 1,
+        count: 7
+      }, {
+        family: Family.SOLAR_TITANIUM,
+        level: 1,
+        count: 2,
+      }],
     }, {
       prefix: 'Prime',
       effectPrefix: [],
@@ -601,7 +690,53 @@ const artifacts: (Artifact | Ingredient)[] = [
         count: 11,
       }]
     }],
-  }
+  },
+  {
+    name: 'Tau Ceti Geode',
+    family: Family.TAU_CETI_GEODE,
+    type: Type.INGREDIENT,
+    levels: [{
+      prefix: 'Piece',
+      components: [],
+    }, {
+      prefix: 'Glimmering',
+      components: [{
+        family: Family.TAU_CETI_GEODE,
+        level: 0,
+        count: 12,
+      }]
+    }, {
+      prefix: '???',
+      components: [{
+        family: Family.TAU_CETI_GEODE,
+        level: 1,
+        count: 14,
+      }]
+    }],
+  },
+  {
+    name: 'Solar Titanium',
+    family: Family.SOLAR_TITANIUM,
+    type: Type.INGREDIENT,
+    levels: [{
+      prefix: 'Ore',
+      components: [],
+    }, {
+      prefix: 'Bar',
+      components: [{
+        family: Family.SOLAR_TITANIUM,
+        level: 0,
+        count: 10,
+      }]
+    }, {
+      prefix: '???',
+      components: [{
+        family: Family.SOLAR_TITANIUM,
+        level: 1,
+        count: 12,
+      }]
+    }],
+  },
 ];
 
 export const useArtifactOptions = () => {
