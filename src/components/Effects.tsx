@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Artifact } from '../hooks';
+import Effect from './Effect';
 
 type Props = {
   artifact: Artifact;
@@ -9,22 +10,21 @@ type Props = {
 const Effects: FunctionComponent<Props> = ({ artifact, level }) => (
   <>
     <div>
-      {artifact.levels[level].effectPrefix.length > 0 && artifact.levels[level].effectPrefix[0]}
-      {artifact.effect}
+      <Effect artifact={artifact} level={level} rarity={0} />
     </div>
     {artifact.levels[level].effectPrefix.length > 1 && (
       <div className="text-blue-400">
-        `${artifact.levels[level].effectPrefix[1]} ${artifact.effect}`
+        <Effect artifact={artifact} level={level} rarity={1} />
       </div>
     )}
     {artifact.levels[level].effectPrefix.length > 2 && (
       <div className="text-purple-400">
-        `${artifact.levels[level].effectPrefix[2]} ${artifact.effect}`
+        <Effect artifact={artifact} level={level} rarity={2} />
       </div>
     )}
     {artifact.levels[level].effectPrefix.length > 3 && (
       <div className="text-yellow-400">
-        `${artifact.levels[level].effectPrefix[3]} ${artifact.effect}`
+        <Effect artifact={artifact} level={level} rarity={3} />
       </div>
     )}
   </>

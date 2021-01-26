@@ -1,7 +1,7 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FunctionComponent } from 'react';
-import { useArtifact } from '../hooks';
+import { Type, useArtifact } from '../hooks';
 import Effects from './Effects';
 
 type Props = {
@@ -20,16 +20,16 @@ const Artifact: FunctionComponent<Props> = ({ familyId, level }) => {
     <div className="flex-1 mt-6">
       <div className="w-full block border rounded-lg shadow-lg bg-gray-50 p-4">
         <div>
-          <span className="font-bold">{artifact.name}</span>
+          <span className="font-bold">{`${artifact.levels[level].prefix} ${artifact.name}`}</span>
           <span className="ml-4 text-gray-400">{artifact.type}</span>
         </div>
-        <Effects artifact={artifact} level={level} />
+        {artifact.type === Type.ARTIFACT && <Effects artifact={artifact} level={level} />}
       </div>
-      {artifact.levels[level].ingredients && <div className="mt-4 text-lg">Ingredients</div>}
-      {artifact.levels[level].ingredients.map(ingredient => (
+      {artifact.levels[level].components.length > 0 && <div className="mt-4 text-lg">Components</div>}
+      {artifact.levels[level].components.map(component => (
         <div className="mt-2 flex">
-          <div className="text-xl mt-6 p-4">{ingredient.count}x</div>
-          <Artifact familyId={ingredient.family} level={ingredient.level} />
+          <div className="text-xl mt-6 p-4">{component.count}x</div>
+          <Artifact familyId={component.family} level={component.level} />
         </div>
       ))}
     </div>

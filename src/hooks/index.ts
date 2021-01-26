@@ -30,27 +30,39 @@ export enum Family {
   TAU_CETI_GEODE,
 }
 
-type Ingredient = {
+type Component = {
   family: Family;
   level: 0 | 1 | 2 | 3;
   count: number;
 }
 
-type Level = {
+type ArtifactLevel = {
   prefix: string;
   effectPrefix: string[];
-  ingredients: Ingredient[];
+  components: Component[];
+}
+
+type IngredientLevel = {
+  prefix: string;
+  components: Component[];
+}
+
+export type Ingredient = {
+  name: string;
+  family: Family;
+  type: Type.INGREDIENT;
+  levels: IngredientLevel[];
 }
 
 export type Artifact = {
   name: string;
   family: Family;
-  type: Type;
+  type: Type.ARTIFACT;
   effect: string;
-  levels: Level[];
+  levels: ArtifactLevel[];
 }
 
-const artifacts: Artifact[] = [
+const artifacts: (Artifact | Ingredient)[] = [
   {
     name: "Aurelian Brooch",
     family: Family.AURELIAN_BROOCH,
@@ -59,11 +71,11 @@ const artifacts: Artifact[] = [
     levels: [{
       prefix: 'Plain',
       effectPrefix: ['+10%'],
-      ingredients: [],
+      components: [],
     }, {
       prefix: '',
       effectPrefix: ['+25%', '+??%', '+??%', '+??%'],
-      ingredients: [{
+      components: [{
         family: Family.AURELIAN_BROOCH,
         level: 0,
         count: 5,
@@ -71,11 +83,19 @@ const artifacts: Artifact[] = [
     }, {
       prefix: 'Jeweled',
       effectPrefix: ['+50%', '+??%', '+??%', '+??%'],
-      ingredients: [],
+      components: [{
+        family: Family.AURELIAN_BROOCH,
+        level: 1,
+        count: 7,
+      }, {
+        family: Family.DEMETERS_NECKLACE,
+        level: 2,
+        count: 2,
+      }],
     }, {
       prefix: 'Eggceptional',
       effectPrefix: ['2x', '?x', '?x', '?x'],
-      ingredients: [],
+      components: [],
     }],
   },
   {
@@ -103,16 +123,80 @@ const artifacts: Artifact[] = [
     name: "Chalice",
     family: Family.CHALICE,
     type: Type.ARTIFACT,
-    effect: "+20% chance of gold in gifts and drones",
-    levels: [],
+    effect: "internal hatchery rate",
+    levels: [{
+      prefix: 'Plain',
+      effectPrefix: ['+5%', '+??%', '+??%', '+??%'],
+      components: [],
+    }],
   },
   {
     name: "Demeter's Necklace",
     family: Family.DEMETERS_NECKLACE,
     type: Type.ARTIFACT,
     effect: "+20% chance of gold in gifts and drones",
-    levels: [],
+    levels: [{
+      prefix: 'Simple',
+      effectPrefix: [],
+      components: [],
+    }, {
+      prefix: 'Jeweled',
+      effectPrefix: [],
+      components: [{
+        family: Family.DEMETERS_NECKLACE,
+        level: 0,
+        count: 3,
+      }],
+    }, {
+      prefix: 'Pristine',
+      effectPrefix: [],
+      components: [{
+        family: Family.DEMETERS_NECKLACE,
+        level: 1,
+        count: 5,
+      }, {
+        family: Family.CHALICE,
+        level: 0,
+        count: 2
+      }]
+    },
+    {
+      prefix: '???',
+      effectPrefix: [],
+      components: [{
+        family: Family.DEMETERS_NECKLACE,
+        level: 3,
+        count: 6
+      }, {
+        family: Family.GOLD_METEORITE,
+        level: 2,
+        count: 1,
+      }]
+    }]
   },
+  {
+    name: 'Gold Meteorite',
+    family: Family.GOLD_METEORITE,
+    type: Type.INGREDIENT,
+    levels: [{
+      prefix: 'Tiny',
+      components: [],
+    }, {
+      prefix: 'Enriched',
+      components: [{
+        family: Family.GOLD_METEORITE,
+        level: 0,
+        count: 9,
+      }]
+    }, {
+      prefix: 'Solid',
+      components: [{
+        family: Family.GOLD_METEORITE,
+        level: 1,
+        count: 11,
+      }]
+    }],
+  }
 ];
 
 export const useArtifactOptions = () => {

@@ -9,7 +9,10 @@ type Props = {
 
 const Effect: FunctionComponent<Props> = ({ artifact, level, rarity }) => {
   const tokens: string[] = [];
-
+  tokens.push(artifact.effect);
+  if (artifact.levels[level].effectPrefix[rarity]) {
+    tokens.unshift(artifact.levels[level].effectPrefix[rarity]);
+  }
   
 
   return <>{tokens.join(' ')}</>;
