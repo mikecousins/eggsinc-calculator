@@ -128,20 +128,32 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Plain',
       effectPrefix: ['+5%', '+??%', '+??%', '+??%'],
       components: [],
+    }, {
+      prefix: 'Polished',
+      effectPrefix: ['+10%', '+??%', '+??%', '+??%'],
+      components: [],
+    }, {
+      prefix: 'Jeweled',
+      effectPrefix: ['+20%', '+??%', '+??%', '+??%'],
+      components: [],
+    }, {
+      prefix: 'Eggceptional',
+      effectPrefix: ['+??%', '+??%', '+??%', '+??%'],
+      components: [],
     }],
   },
   {
     name: "Demeter's Necklace",
     family: Family.DEMETERS_NECKLACE,
     type: Type.ARTIFACT,
-    effect: "+20% chance of gold in gifts and drones",
+    effect: "egg value",
     levels: [{
       prefix: 'Simple',
-      effectPrefix: [],
+      effectPrefix: ['+10%'],
       components: [],
     }, {
       prefix: 'Jeweled',
-      effectPrefix: [],
+      effectPrefix: ['+25%', '+??%', '+??%', '+??%'],
       components: [{
         family: Family.DEMETERS_NECKLACE,
         level: 0,
@@ -149,7 +161,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       }],
     }, {
       prefix: 'Pristine',
-      effectPrefix: [],
+      effectPrefix: ['+50%'],
       components: [{
         family: Family.DEMETERS_NECKLACE,
         level: 1,
@@ -157,16 +169,16 @@ const artifacts: (Artifact | Ingredient)[] = [
       }, {
         family: Family.CHALICE,
         level: 0,
-        count: 2
+        count: 2,
       }]
     },
     {
-      prefix: '???',
+      prefix: 'Beggspoke',
       effectPrefix: [],
       components: [{
         family: Family.DEMETERS_NECKLACE,
-        level: 3,
-        count: 6
+        level: 2,
+        count: 6,
       }, {
         family: Family.GOLD_METEORITE,
         level: 2,
