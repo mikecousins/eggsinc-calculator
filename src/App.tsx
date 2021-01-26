@@ -5,7 +5,7 @@ import Artifacts from './pages/Artifacts';
 const App = () => (
   <Router>
     <Switch>
-      <Route path="/:id?">
+      <Route path="/:familyId?/:level?">
         <Artifacts />
       </Route>
     </Switch>

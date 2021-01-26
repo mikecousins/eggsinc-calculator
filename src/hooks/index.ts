@@ -1,395 +1,139 @@
-import Artifact from '../components/Artifact';
-
-export enum ArtifactType {
-  ARTIFACT,
-  STONE,
-  INGREDIENT,
+export enum Type {
+  ARTIFACT = 'Artifact',
+  STONE = 'Stone',
+  INGREDIENT = 'Ingredient',
 }
 
-const artifacts = [
+export enum Family {
+  AURELIAN_BROOCH,
+  BEAK_OF_MIDAS,
+  BOOK_OF_BASAN,
+  CARVED_RAINSTICK,
+  CHALICE,
+  DEMETERS_NECKLACE,
+  DILITHIUM_MONOCLE,
+  GUSSET,
+  INTERSTELLAR_COMPASS,
+  LIGHT_OF_EGGENDEL,
+  LUNAR_TOTEM,
+  MERCURYS_LENS,
+  NEODYMIUM_MEDALLION,
+  PHOENIX_FEATHER,
+  PUZZLE_CUBE,
+  QUANTUM_METRONOME,
+  SHIP_IN_A_BOTTLE,
+  TACHYON_DEFLECTOR,
+  TITANIUM_ACTUATOR,
+  TUNGSTEN_ANKH,
+  VIAL_OF_MARTIAN_DUST,
+  GOLD_METEORITE,
+  TAU_CETI_GEODE,
+}
+
+type Ingredient = {
+  family: Family;
+  level: 0 | 1 | 2 | 3;
+  count: number;
+}
+
+type Level = {
+  prefix: string;
+  effectPrefix: string[];
+  ingredients: Ingredient[];
+}
+
+export type Artifact = {
+  name: string;
+  family: Family;
+  type: Type;
+  effect: string;
+  levels: Level[];
+}
+
+const artifacts: Artifact[] = [
   {
-    id: 0,
-    name: "Plain Aurelian Brooch",
-    type: ArtifactType.ARTIFACT,
-    effect: "+10% drone rewards",
-  },
-  {
-    id: 1,
     name: "Aurelian Brooch",
-    type: ArtifactType.ARTIFACT,
-    effect: "+25% drone rewards",
-    ingredients: [{
-      id: 0,
-      count: 5,
-    }],
-  },
-  {
-    id: 2,
-    name: "Jeweled Aurelian Brooch",
-    type: ArtifactType.ARTIFACT,
-    effect: "+50% drone rewards",
-    ingredients: [{
-      id: 1,
-      count: 7,
+    family: Family.AURELIAN_BROOCH,
+    type: Type.ARTIFACT,
+    effect: 'drone rewards',
+    levels: [{
+      prefix: 'Plain',
+      effectPrefix: ['+10%'],
+      ingredients: [],
     }, {
-      id: 4,
-      count: 2,
+      prefix: '',
+      effectPrefix: ['+25%', '+??%', '+??%', '+??%'],
+      ingredients: [{
+        family: Family.AURELIAN_BROOCH,
+        level: 0,
+        count: 5,
+      }],
+    }, {
+      prefix: 'Jeweled',
+      effectPrefix: ['+50%', '+??%', '+??%', '+??%'],
+      ingredients: [],
+    }, {
+      prefix: 'Eggceptional',
+      effectPrefix: ['2x', '?x', '?x', '?x'],
+      ingredients: [],
     }],
   },
   {
-    id: 3,
-    name: "Eggceptional Aurelian Brooch",
-    type: ArtifactType.ARTIFACT,
-    rareEffect: "2x drone rewards",
-  },
-  {
-    id: 4,
-    name: "Dull Beak of Midas",
-    type: ArtifactType.ARTIFACT,
-    effect: "+20% chance of gold in gifts and drones"
-  },
-  {
-    id: 5,
     name: "Beak of Midas",
-    type: ArtifactType.ARTIFACT,
-    effect: "+50% chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 4,
-      count: 4,
-    }],
+    family: Family.BEAK_OF_MIDAS,
+    type: Type.ARTIFACT,
+    effect: 'chance of gold in gifts and drones',
+    levels: [],
   },
   {
-    id: 6,
-    name: "Jeweled Beak of Midas",
-    type: ArtifactType.ARTIFACT,
-    effect: "2x chance of gold in gifts and drones",
-    rareEffect: "3x chance of gold in gifts and drones",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 5,
-      count: 5,
-    }, {
-      id: 113,
-      count: 1,
-    }],
+    name: 'Book of Basan',
+    family: Family.BOOK_OF_BASAN,
+    type: Type.ARTIFACT,
+    effect: 'bonus per Egg of Prophecy',
+    levels: [],
   },
   {
-    id: 7,
-    name: "Glistening Beak of Midas",
-    type: ArtifactType.ARTIFACT,
-    effect: "5x chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 6,
-      count: 6,
-    }, {
-      id: 111,
-      count: 3,
-    }],
-  },
-  {
-    id: 8,
-    name: "Simple Carved Rainstick",
-    type: ArtifactType.ARTIFACT,
-    effect: "+20% chance of gold in gifts and drones"
-  },
-  {
-    id: 9,
     name: "Carved Rainstick",
-    type: ArtifactType.ARTIFACT,
-    effect: "+50% chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 8,
-      count: 4,
-    }],
+    family: Family.CARVED_RAINSTICK,
+    type: Type.ARTIFACT,
+    effect: "+20% chance of gold in gifts and drones",
+    levels: [],
   },
   {
-    id: 10,
-    name: "Ornate Carved Rainstick",
-    type: ArtifactType.ARTIFACT,
-    effect: "2x chance of gold in gifts and drones",
-    rareEffect: "3x chance of gold in gifts and drones",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 9,
-      count: 5,
-    }, {
-      id: 9,
-      count: 1,
-    }],
+    name: "Chalice",
+    family: Family.CHALICE,
+    type: Type.ARTIFACT,
+    effect: "+20% chance of gold in gifts and drones",
+    levels: [],
   },
   {
-    id: 11,
-    name: "Magnificent Carved Rainstick",
-    type: ArtifactType.ARTIFACT,
-    effect: "5x chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-  },
-  {
-    id: 12,
-    name: "Plain Chalice",
-    type: ArtifactType.ARTIFACT,
-    effect: "+20% chance of gold in gifts and drones"
-  },
-  {
-    id: 13,
-    name: "Polished Chalice",
-    type: ArtifactType.ARTIFACT,
-    effect: "+50% chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 12,
-      count: 4,
-    }, {
-      id: 110,
-      count: 1,
-    }],
-  },
-  {
-    id: 14,
-    name: "Jeweled Chalice",
-    type: ArtifactType.ARTIFACT,
-    effect: "2x chance of gold in gifts and drones",
-    rareEffect: "3x chance of gold in gifts and drones",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 5,
-      count: 5,
-    }, {
-      id: 9,
-      count: 1,
-    }],
-  },
-  {
-    id: 15,
-    name: "Eggceptional Chalice",
-    type: ArtifactType.ARTIFACT,
-    effect: "5x chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-  },
-  {
-    id: 16,
-    name: "Simple Demeter's Necklace",
-    type: ArtifactType.ARTIFACT,
-    effect: "+20% chance of gold in gifts and drones"
-  },
-  {
-    id: 17,
-    name: "Jeweled Demeter's Necklace",
-    type: ArtifactType.ARTIFACT,
-    effect: "+50% chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 4,
-      count: 4,
-    }],
-  },
-  {
-    id: 18,
-    name: "Pristine Demeter's Necklace",
-    type: ArtifactType.ARTIFACT,
-    effect: "2x chance of gold in gifts and drones",
-    rareEffect: "3x chance of gold in gifts and drones",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 5,
-      count: 5,
-    }, {
-      id: 9,
-      count: 1,
-    }],
-  },
-  {
-    id: 19,
-    name: "Beggspoke Demeter's Necklace",
-    type: ArtifactType.ARTIFACT,
-    effect: "5x chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-  },
-  {
-    id: 20,
-    name: "Dilithium Monocle",
-    type: ArtifactType.ARTIFACT,
-    effect: "+20% chance of gold in gifts and drones"
-  },
-  {
-    id: 21,
-    name: "Precise Dilithium Monocle",
-    type: ArtifactType.ARTIFACT,
-    effect: "+50% chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 4,
-      count: 4,
-    }],
-  },
-  {
-    id: 22,
-    name: "Eggsacting Dilithium Monocle",
-    type: ArtifactType.ARTIFACT,
-    effect: "2x chance of gold in gifts and drones",
-    rareEffect: "3x chance of gold in gifts and drones",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 5,
-      count: 5,
-    }, {
-      id: 9,
-      count: 1,
-    }],
-  },
-  {
-    id: 23,
-    name: "Flawless Dilithium Monocle",
-    type: ArtifactType.ARTIFACT,
-    effect: "5x chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-  },
-  {
-    id: 24,
-    name: "Plain Gusset",
-    type: ArtifactType.ARTIFACT,
-    effect: "+20% chance of gold in gifts and drones"
-  },
-  {
-    id: 25,
-    name: "Ornate Gusset",
-    type: ArtifactType.ARTIFACT,
-    effect: "+50% chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 4,
-      count: 4,
-    }],
-  },
-  {
-    id: 26,
-    name: "Distegguished Gusset",
-    type: ArtifactType.ARTIFACT,
-    effect: "2x chance of gold in gifts and drones",
-    rareEffect: "3x chance of gold in gifts and drones",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-    ingredients: [{
-      id: 5,
-      count: 5,
-    }, {
-      id: 9,
-      count: 1,
-    }],
-  },
-  {
-    id: 27,
-    name: "Jeweled Gusset",
-    type: ArtifactType.ARTIFACT,
-    effect: "5x chance of gold in gifts and drones",
-    rareEffect: "+52% drone rewards",
-    epicEffect: "+54% drone rewards",
-    legendaryEffect: "+56% drone rewards",
-  },
-  {
-    id: 28,
-    name: "Miscalibrated Interstellar Compass",
-    type: ArtifactType.ARTIFACT,
-    effect: "+5% shipping rate"
-  },
-  {
-    id: 29,
-    name: "Interstellar Compass",
-    type: ArtifactType.ARTIFACT,
-    effect: "+10% shipping rate",
-    rareEffect: "+??% shipping rate",
-    epicEffect: "+??% shipping rate",
-    legendaryEffect: "+??% shipping rate",
-    ingredients: [{
-      id: 28,
-      count: 4,
-    }],
-  },
-  {
-    id: 30,
-    name: "Precise Interstellar Compass",
-    type: ArtifactType.ARTIFACT,
-    effect: "+20% shipping rate",
-    rareEffect: "+??% shipping rate",
-    epicEffect: "+??% shipping rate",
-    legendaryEffect: "+??% shipping rate",
-    ingredients: [{
-      id: 5,
-      count: 5,
-    }, {
-      id: 9,
-      count: 1,
-    }],
-  },
-  {
-    id: 31,
-    name: "Clairvoyant Interstellar Compass",
-    type: ArtifactType.ARTIFACT,
-    effect: "+??% shipping rate",
-    rareEffect: "+??% shipping rate",
-    epicEffect: "+??% shipping rate",
-    legendaryEffect: "+??% shipping rate",
-  },
-  {
-    id: 100,
-    name: "Misaligned Mercury's Lens",
-    type: ArtifactType.ARTIFACT,
-  },
-  {
-    id: 110,
-    name: "Enriched Gold Meteorite",
-    type: ArtifactType.INGREDIENT,
-  },
-  {
-    id: 111,
-    name: "Solid Gold Meteorite",
-    type: ArtifactType.INGREDIENT,
-    ingredients: [{
-      id: 110,
-      count: 11,
-    }],
-  },
-  {
-    id: 113,
-    name: "Glimmering Tau Ceti Geode",
-    type: ArtifactType.INGREDIENT,
+    name: "Demeter's Necklace",
+    family: Family.DEMETERS_NECKLACE,
+    type: Type.ARTIFACT,
+    effect: "+20% chance of gold in gifts and drones",
+    levels: [],
   },
 ];
+
+export const useArtifactOptions = () => {
+  const options: { name: string, path: string }[] = [];
+  
+  artifacts.forEach(artifact => {
+    artifact.levels.forEach((level, index) => {
+      options.push({
+        name: `${level.prefix} ${artifact.name}`,
+        path: `${artifact.family}/${index}`,
+      })
+    })
+  });
+
+  return options;
+}
 
 export const useArtifacts = () => {
   return artifacts;
 }
 
-export const useArtifact = (id: number) => {
-  return artifacts.find(artifact => artifact.id === id);
+export const useArtifact = (family: Family) => {
+  return artifacts.find(artifact => artifact.family === family);
 }
