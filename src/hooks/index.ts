@@ -131,7 +131,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: 'Glistening',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.BEAK_OF_MIDAS,
+        level: 2,
+        count: 6,
+      }, {
+        family: Family.GOLD_METEORITE,
+        level: 2,
+        count: 3,
+      }],
     }],
   },
   {
@@ -181,7 +189,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: 'Ornate',
       effectPrefix: ['2x'],
-      components: [],
+      components: [{
+        family: Family.CARVED_RAINSTICK,
+        level: 1,
+        count: 7,
+      }, {
+        family: Family.BEAK_OF_MIDAS,
+        level: 2,
+        count: 1,
+      }],
     }, {
       prefix: 'Meggnificent',
       effectPrefix: [],
@@ -200,11 +216,27 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: 'Polished',
       effectPrefix: ['+10%', '+??%', '+??%', '+??%'],
-      components: [],
+      components: [{
+        family: Family.CHALICE,
+        level: 0,
+        count: 4,
+      }, {
+        family: Family.GOLD_METEORITE,
+        level: 1,
+        count: 1,
+      }],
     }, {
       prefix: 'Jeweled',
       effectPrefix: ['+20%', '+??%', '+??%', '+??%'],
-      components: [],
+      components: [{
+        family: Family.CHALICE,
+        level: 1,
+        count: 6,
+      }, {
+        family: Family.TAU_CETI_GEODE,
+        level: 1,
+        count: 4,
+      }],
     }, {
       prefix: 'Eggceptional',
       effectPrefix: ['+??%', '+??%', '+??%', '+??%'],
@@ -267,7 +299,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: 'Precise',
       effectPrefix: ['+10%'],
-      components: [],
+      components: [{
+        family: Family.DILITHIUM_MONOCLE,
+        level: 0,
+        count: 5,
+      }, {
+        family: Family.TITANIUM_ACTUATOR,
+        level: 0,
+        count: 1,
+      }],
     }, {
       prefix: 'Eggsacting',
       effectPrefix: ['+14%'],
@@ -310,7 +350,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: 'Jeweled',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.GUSSET,
+        level: 2,
+        count: 8,
+      }, {
+        family: Family.GOLD_METEORITE,
+        level: 2,
+        count: 3,
+      }],
     }],
   },
   {
@@ -325,11 +373,23 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: '',
       effectPrefix: ['+10%'],
-      components: [],
+      components: [{
+        family: Family.INTERSTELLAR_COMPASS,
+        level: 0,
+        count: 6,
+      }],
     }, {
       prefix: 'Precise',
       effectPrefix: ['+20%'],
-      components: [],
+      components: [{
+        family: Family.INTERSTELLAR_COMPASS,
+        level: 1,
+        count: 8,
+      }, {
+        family: Family.SOLAR_TITANIUM,
+        level: 1,
+        count: 4,
+      }],
     }, {
       prefix: 'Clairvoyant',
       effectPrefix: [],
@@ -410,15 +470,35 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: '',
       effectPrefix: ['+20%', '+22%'],
-      components: [],
+      components: [{
+        family: Family.MERCURYS_LENS,
+        level: 0,
+        count: 6,
+      }],
     }, {
       prefix: 'Precise',
       effectPrefix: ['+50%', '+55%'],
-      components: [],
+      components: [{
+        family: Family.MERCURYS_LENS,
+        level: 1,
+        count: 8,
+      }, {
+        family: Family.TAU_CETI_GEODE,
+        level: 1,
+        count: 2,
+      }],
     }, {
       prefix: 'Meggnificent',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.MERCURYS_LENS,
+        level: 2,
+        count: 10,
+      }, {
+        family: Family.SOLAR_TITANIUM,
+        level: 2,
+        count: 6,
+      }],
     }],
   },
   {
@@ -433,15 +513,35 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: '',
       effectPrefix: ['+25%', '+30%'],
-      components: [],
+      components: [{
+        family: Family.NEODYMIUM_MEDALLION,
+        level: 0,
+        count: 4,
+      }],
     }, {
       prefix: 'Precise',
       effectPrefix: ['+50%'],
-      components: [],
+      components: [{
+        family: Family.NEODYMIUM_MEDALLION,
+        level: 1,
+        count: 5,
+      }, {
+        family: Family.TAU_CETI_GEODE,
+        level: 1,
+        count: 1,
+      }],
     }, {
       prefix: 'Eggceptional',
       effectPrefix: ['2x'],
-      components: [],
+      components: [{
+        family: Family.NEODYMIUM_MEDALLION,
+        level: 2,
+        count: 6,
+      }, {
+        family: Family.INTERSTELLAR_COMPASS,
+        level: 2,
+        count: 2,
+      }],
     }],
   },
   {
@@ -456,7 +556,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: '',
       effectPrefix: ['2x'],
-      components: [],
+      components: [{
+        family: Family.PHOENIX_FEATHER,
+        level: 0,
+        count: 6,
+      }, {
+        family: Family.TAU_CETI_GEODE,
+        level: 1,
+        count: 1,
+      }],
     }, {
       prefix: 'Brilliant',
       effectPrefix: ['5x'],
@@ -479,7 +587,11 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: '',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.PUZZLE_CUBE,
+        level: 0,
+        count: 3,
+      }],
     }, {
       prefix: 'Mystical',
       effectPrefix: [],
@@ -518,7 +630,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: 'Adequate',
       effectPrefix: ['+10%'],
-      components: [],
+      components: [{
+        family: Family.QUANTUM_METRONOME,
+        level: 0,
+        count: 5,
+      }, {
+        family: Family.TITANIUM_ACTUATOR,
+        level: 0,
+        count: 2,
+      }],
     }, {
       prefix: 'Perfect',
       effectPrefix: ['+14%'],
@@ -665,7 +785,15 @@ const artifacts: (Artifact | Ingredient)[] = [
     }, {
       prefix: 'Prime',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.VIAL_OF_MARTIAN_DUST,
+        level: 2,
+        count: 8,
+      }, {
+        family: Family.TAU_CETI_GEODE,
+        level: 2,
+        count: 1,
+      }],
     }],
   },
   {
@@ -706,7 +834,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         count: 12,
       }]
     }, {
-      prefix: '???',
+      prefix: 'Radiant',
       components: [{
         family: Family.TAU_CETI_GEODE,
         level: 1,
@@ -729,7 +857,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         count: 10,
       }]
     }, {
-      prefix: '???',
+      prefix: 'Geogon',
       components: [{
         family: Family.SOLAR_TITANIUM,
         level: 1,
