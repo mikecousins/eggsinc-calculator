@@ -169,7 +169,7 @@ const artifacts: (Artifact | Ingredient)[] = [
     name: "Carved Rainstick",
     family: Family.CARVED_RAINSTICK,
     type: Type.ARTIFACT,
-    effect: "+20% chance of gold in gifts and drones",
+    effect: "chance of gold in gifts and drones",
     levels: [{
       prefix: 'Simple',
       effectPrefix: ['+20%'],
