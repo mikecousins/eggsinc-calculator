@@ -29,6 +29,7 @@ export enum Family {
   GOLD_METEORITE,
   TAU_CETI_GEODE,
   SOLAR_TITANIUM,
+  QUANTUM_STONE,
 }
 
 type Component = {
@@ -37,15 +38,10 @@ type Component = {
   count: number;
 }
 
-type ArtifactLevel = {
-  prefix: string;
-  effectPrefix: string[];
-  components: Component[];
-}
-
 type IngredientLevel = {
   prefix: string;
   components: Component[];
+  consumed: Component | undefined;
 }
 
 export type Ingredient = {
@@ -53,6 +49,13 @@ export type Ingredient = {
   family: Family;
   type: Type.INGREDIENT;
   levels: IngredientLevel[];
+}
+
+type ArtifactLevel = {
+  prefix: string;
+  effectPrefix: string[];
+  components: Component[];
+  consumed: Component | undefined;
 }
 
 export type Artifact = {
@@ -63,7 +66,22 @@ export type Artifact = {
   levels: ArtifactLevel[];
 }
 
-const artifacts: (Artifact | Ingredient)[] = [
+type StoneLevel = {
+  prefix: string;
+  effectPrefix: string;
+  components: Component[];
+  consumed: Component | undefined;
+}
+
+export type Stone = {
+  name: string;
+  family: Family;
+  type: Type.STONE;
+  effect: string;
+  levels: StoneLevel[];
+}
+
+const artifacts: (Artifact | Ingredient | Stone)[] = [
   {
     name: "Aurelian Brooch",
     family: Family.AURELIAN_BROOCH,
@@ -73,6 +91,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Plain',
       effectPrefix: ['+10%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['+25%', '+??%', '+??%', '+??%'],
@@ -81,6 +100,11 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 5,
       }],
+      consumed: {
+        family: Family.QUANTUM_STONE,
+        level: 0,
+        count: 1,
+      },
     }, {
       prefix: 'Jeweled',
       effectPrefix: ['+50%', '+??%', '+??%', '+??%'],
@@ -93,10 +117,12 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 2,
         count: 2,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Eggceptional',
       effectPrefix: ['2x', '?x', '?x', '?x'],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -108,6 +134,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Dull',
       effectPrefix: ['+20%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['+50%'],
@@ -116,6 +143,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 4,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Jeweled',
       effectPrefix: ['2x', '3x'],
@@ -128,6 +156,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 1,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Glistening',
       effectPrefix: ['5x'],
@@ -140,6 +169,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 2,
         count: 3,
       }],
+      consumed: undefined,
     }],
   },
   {
@@ -151,18 +181,22 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: '',
       effectPrefix: ['+0.25%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Collectors',
       effectPrefix: ['+0.5%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Fortified',
       effectPrefix: ['???'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Gilded',
       effectPrefix: ['???'],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -174,6 +208,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Simple',
       effectPrefix: ['+20%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['+50%'],
@@ -186,6 +221,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 1,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Ornate',
       effectPrefix: ['2x'],
@@ -198,10 +234,12 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 2,
         count: 1,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Meggnificent',
       effectPrefix: ['???'],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -213,6 +251,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Plain',
       effectPrefix: ['+5%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Polished',
       effectPrefix: ['+10%', '+??%', '+??%', '+??%'],
@@ -225,6 +264,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 1,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Jeweled',
       effectPrefix: ['+20%', '+??%', '+??%', '+??%'],
@@ -237,10 +277,12 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 4,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Eggceptional',
       effectPrefix: ['+??%', '+??%', '+??%', '+??%'],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -252,6 +294,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Simple',
       effectPrefix: ['+10%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Jeweled',
       effectPrefix: ['+25%', '+35%', '+??%', '+??%'],
@@ -260,6 +303,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 3,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Pristine',
       effectPrefix: ['+50%', '+60%', '+75%', '+??%'],
@@ -271,7 +315,8 @@ const artifacts: (Artifact | Ingredient)[] = [
         family: Family.CHALICE,
         level: 0,
         count: 2,
-      }]
+      }],
+      consumed: undefined,
     },
     {
       prefix: 'Beggspoke',
@@ -284,7 +329,8 @@ const artifacts: (Artifact | Ingredient)[] = [
         family: Family.GOLD_METEORITE,
         level: 2,
         count: 1,
-      }]
+      }],
+      consumed: undefined,
     }]
   },
   {
@@ -296,6 +342,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: '',
       effectPrefix: ['+5%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Precise',
       effectPrefix: ['+10%'],
@@ -308,14 +355,17 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 1,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Eggsacting',
       effectPrefix: ['+14%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Flawless',
       effectPrefix: ['+??%'],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -327,6 +377,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Plain',
       effectPrefix: ['+5%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Ornate',
       effectPrefix: ['+10%', '+11%', '+12%', '+13%'],
@@ -335,6 +386,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 5,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Distegguished',
       effectPrefix: ['+14%', '+15%'],
@@ -347,6 +399,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 2,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Jeweled',
       effectPrefix: ['???'],
@@ -359,6 +412,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 2,
         count: 3,
       }],
+      consumed: undefined,
     }],
   },
   {
@@ -370,6 +424,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Miscalibrated',
       effectPrefix: ['+5%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['+10%'],
@@ -378,6 +433,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 6,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Precise',
       effectPrefix: ['+20%'],
@@ -390,10 +446,12 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 4,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Clairvoyant',
       effectPrefix: ['???'],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -405,18 +463,22 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Dim',
       effectPrefix: ['+50%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Shimmering',
       effectPrefix: ['2x'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Glowing',
       effectPrefix: ['???'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Brilliant',
       effectPrefix: ['???'],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -428,6 +490,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Basic',
       effectPrefix: ['+50%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['2x', '2.5x'],
@@ -436,6 +499,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 3,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Powerful',
       effectPrefix: ['4x', '5x'],
@@ -444,6 +508,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 6,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Eggceptional',
       effectPrefix: ['6x'],
@@ -456,6 +521,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 1,
       }],
+      consumed: undefined,
     }],
   },
   {
@@ -467,6 +533,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Misaligned',
       effectPrefix: ['+10%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['+20%', '+22%'],
@@ -475,6 +542,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 6,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Precise',
       effectPrefix: ['+50%', '+55%'],
@@ -487,6 +555,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 2,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Meggnificent',
       effectPrefix: [],
@@ -499,6 +568,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 2,
         count: 6,
       }],
+      consumed: undefined,
     }],
   },
   {
@@ -510,6 +580,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Weak',
       effectPrefix: ['+10%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['+25%', '+30%'],
@@ -518,6 +589,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 4,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Precise',
       effectPrefix: ['+50%'],
@@ -530,6 +602,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 1,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Eggceptional',
       effectPrefix: ['2x'],
@@ -542,6 +615,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 2,
         count: 2,
       }],
+      consumed: undefined,
     }],
   },
   {
@@ -553,6 +627,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Tattered',
       effectPrefix: ['+25%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['2x'],
@@ -565,14 +640,17 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 1,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Brilliant',
       effectPrefix: ['5x'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Blazing',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -584,6 +662,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Ancient',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: [],
@@ -592,6 +671,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 3,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Mystical',
       effectPrefix: [],
@@ -604,6 +684,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 2,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Unsolvable',
       effectPrefix: [],
@@ -616,6 +697,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 2,
         count: 2,
       }],
+      consumed: undefined,
     }],
   },
   {
@@ -627,6 +709,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Misaligned',
       effectPrefix: ['+5%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Adequate',
       effectPrefix: ['+10%'],
@@ -639,14 +722,17 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 2,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Perfect',
       effectPrefix: ['+14%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Reggference',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -658,18 +744,22 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: '',
       effectPrefix: ['+20%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Detailed',
       effectPrefix: ['+30%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Complex',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Eggquisite',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -681,18 +771,22 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Weak',
       effectPrefix: ['+5%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['+8%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Robust',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Eggceptional',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -704,18 +798,22 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Inconsistent',
       effectPrefix: ['+1'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['+4'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Precise',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Reggference',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -727,6 +825,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Crude',
       effectPrefix: ['+10%'],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: ['+25%', '+28%'],
@@ -735,6 +834,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 6,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Polished',
       effectPrefix: ['+50%', '+75%'],
@@ -747,10 +847,12 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 2,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Brilliant',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }],
   },
   {
@@ -762,6 +864,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       prefix: 'Tiny',
       effectPrefix: [],
       components: [],
+      consumed: undefined,
     }, {
       prefix: '',
       effectPrefix: [],
@@ -770,6 +873,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 0,
         count: 5,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Hermetic',
       effectPrefix: [],
@@ -782,6 +886,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 1,
         count: 2,
       }],
+      consumed: undefined,
     }, {
       prefix: 'Prime',
       effectPrefix: [],
@@ -794,6 +899,7 @@ const artifacts: (Artifact | Ingredient)[] = [
         level: 2,
         count: 1,
       }],
+      consumed: undefined,
     }],
   },
   {
@@ -803,20 +909,23 @@ const artifacts: (Artifact | Ingredient)[] = [
     levels: [{
       prefix: 'Tiny',
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Enriched',
       components: [{
         family: Family.GOLD_METEORITE,
         level: 0,
         count: 9,
-      }]
+      }],
+      consumed: undefined,
     }, {
       prefix: 'Solid',
       components: [{
         family: Family.GOLD_METEORITE,
         level: 1,
         count: 11,
-      }]
+      }],
+      consumed: undefined,
     }],
   },
   {
@@ -826,20 +935,23 @@ const artifacts: (Artifact | Ingredient)[] = [
     levels: [{
       prefix: 'Piece',
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Glimmering',
       components: [{
         family: Family.TAU_CETI_GEODE,
         level: 0,
         count: 12,
-      }]
+      }],
+      consumed: undefined,
     }, {
       prefix: 'Radiant',
       components: [{
         family: Family.TAU_CETI_GEODE,
         level: 1,
         count: 14,
-      }]
+      }],
+      consumed: undefined,
     }],
   },
   {
@@ -849,22 +961,55 @@ const artifacts: (Artifact | Ingredient)[] = [
     levels: [{
       prefix: 'Ore',
       components: [],
+      consumed: undefined,
     }, {
       prefix: 'Bar',
       components: [{
         family: Family.SOLAR_TITANIUM,
         level: 0,
         count: 10,
-      }]
+      }],
+      consumed: undefined,
     }, {
       prefix: 'Geogon',
       components: [{
         family: Family.SOLAR_TITANIUM,
         level: 1,
         count: 12,
-      }]
+      }],
+      consumed: undefined,
     }],
   },
+  {
+    name: 'Quantum Stone',
+    family: Family.QUANTUM_STONE,
+    type: Type.STONE,
+    effect: 'shippin rate',
+    levels: [{
+      prefix: 'Fragment',
+      effectPrefix: '+0%',
+      components: [],
+      consumed: undefined,
+    }, {
+      prefix: '',
+      effectPrefix: '+2%',
+      components: [{
+        family: Family.QUANTUM_STONE,
+        level: 0,
+        count: 20,
+      }],
+      consumed: undefined,
+    }, {
+      prefix: '???',
+      effectPrefix: '???',
+      components: [{
+        family: Family.QUANTUM_STONE,
+        level: 1,
+        count: 15,
+      }],
+      consumed: undefined,
+    }],
+  }
 ];
 
 export const useArtifactOptions = () => {
