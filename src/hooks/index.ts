@@ -899,7 +899,7 @@ export const useArtifactUsedIn = (family: Family, level: number) => {
         artifactsUsedIn.push({
           name: `${l.prefix} ${a.name}`,
           path: `/${a.family}/${index}`,
-        })
+        });
       }
     })
   })

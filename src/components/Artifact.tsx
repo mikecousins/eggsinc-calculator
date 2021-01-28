@@ -36,7 +36,7 @@ const Artifact: FunctionComponent<Props> = ({ familyId, level }) => {
           </div>
         </div>
       </div>
-      {artifact.levels[level].components.length > 0 && <div className="mt-4 text-lg">Components</div>}
+      {artifact.levels[level].components.length > 0 && <div className="mt-6 text-gray-500">Made With</div>}
       {artifact.levels[level].components.map(component => (
         <div className="mt-2 flex" key={component.family}>
           <div className="text-xl mt-6 p-4">{component.count}x</div>
