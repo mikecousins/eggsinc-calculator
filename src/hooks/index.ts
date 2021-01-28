@@ -862,12 +862,12 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     effect: "max running chicken bonus",
     levels: [{
       prefix: 'Tiny',
-      effectPrefix: [],
+      effectPrefix: ['+10'],
       components: [],
       consumed: undefined,
     }, {
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+50', '+60'],
       components: [{
         family: Family.VIAL_OF_MARTIAN_DUST,
         level: 0,
@@ -876,7 +876,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: 'Hermetic',
-      effectPrefix: [],
+      effectPrefix: ['+100'],
       components: [{
         family: Family.VIAL_OF_MARTIAN_DUST,
         level: 1,
