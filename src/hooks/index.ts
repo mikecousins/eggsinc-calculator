@@ -106,11 +106,11 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: 'chance of gold in gifts and drones',
     levels: [{
       prefix: 'Dull',
-      effectPrefix: [],
+      effectPrefix: ['+20%'],
       components: [],
     }, {
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+50%'],
       components: [{
         family: Family.BEAK_OF_MIDAS,
         level: 0,
@@ -118,7 +118,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       }],
     }, {
       prefix: 'Jeweled',
-      effectPrefix: [],
+      effectPrefix: ['2x', '3x'],
       components: [{
         family: Family.BEAK_OF_MIDAS,
         level: 1,
@@ -130,7 +130,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       }],
     }, {
       prefix: 'Glistening',
-      effectPrefix: [],
+      effectPrefix: ['5x'],
       components: [{
         family: Family.BEAK_OF_MIDAS,
         level: 2,
@@ -149,19 +149,19 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: 'bonus per Egg of Prophecy',
     levels: [{
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['+0.25%'],
       components: [],
     }, {
       prefix: 'Collectors',
-      effectPrefix: [],
+      effectPrefix: ['+0.5%'],
       components: [],
     }, {
       prefix: 'Fortified',
-      effectPrefix: [],
+      effectPrefix: ['???'],
       components: [],
     }, {
       prefix: 'Gilded',
-      effectPrefix: [],
+      effectPrefix: ['???'],
       components: [],
     }],
   },
@@ -200,7 +200,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       }],
     }, {
       prefix: 'Meggnificent',
-      effectPrefix: [],
+      effectPrefix: ['???'],
       components: [],
     }],
   },
@@ -211,7 +211,7 @@ const artifacts: (Artifact | Ingredient)[] = [
     effect: "internal hatchery rate",
     levels: [{
       prefix: 'Plain',
-      effectPrefix: ['+5%', '+??%', '+??%', '+??%'],
+      effectPrefix: ['+5%'],
       components: [],
     }, {
       prefix: 'Polished',
@@ -254,7 +254,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       components: [],
     }, {
       prefix: 'Jeweled',
-      effectPrefix: ['+25%', '+??%', '+??%', '+??%'],
+      effectPrefix: ['+25%', '+35%', '+??%', '+??%'],
       components: [{
         family: Family.DEMETERS_NECKLACE,
         level: 0,
@@ -262,7 +262,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       }],
     }, {
       prefix: 'Pristine',
-      effectPrefix: ['+50%'],
+      effectPrefix: ['+50%', '+60%', '+75%', '+??%'],
       components: [{
         family: Family.DEMETERS_NECKLACE,
         level: 1,
@@ -275,7 +275,7 @@ const artifacts: (Artifact | Ingredient)[] = [
     },
     {
       prefix: 'Beggspoke',
-      effectPrefix: [],
+      effectPrefix: ['???'],
       components: [{
         family: Family.DEMETERS_NECKLACE,
         level: 2,
@@ -314,7 +314,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       components: [],
     }, {
       prefix: 'Flawless',
-      effectPrefix: [],
+      effectPrefix: ['+??%'],
       components: [],
     }],
   },
@@ -349,7 +349,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       }],
     }, {
       prefix: 'Jeweled',
-      effectPrefix: [],
+      effectPrefix: ['???'],
       components: [{
         family: Family.GUSSET,
         level: 2,
@@ -392,7 +392,7 @@ const artifacts: (Artifact | Ingredient)[] = [
       }],
     }, {
       prefix: 'Clairvoyant',
-      effectPrefix: [],
+      effectPrefix: ['???'],
       components: [],
     }],
   },
@@ -411,11 +411,11 @@ const artifacts: (Artifact | Ingredient)[] = [
       components: [],
     }, {
       prefix: 'Glowing',
-      effectPrefix: [],
+      effectPrefix: ['???'],
       components: [],
     }, {
       prefix: 'Brilliant',
-      effectPrefix: [],
+      effectPrefix: ['???'],
       components: [],
     }],
   },
