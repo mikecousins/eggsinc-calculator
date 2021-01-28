@@ -889,3 +889,20 @@ export const useArtifacts = () => {
 export const useArtifact = (family: Family) => {
   return artifacts.find(artifact => artifact.family === family);
 }
+
+export const useArtifactUsedIn = (family: Family, level: number) => {
+  const artifactsUsedIn: { name: string, path: string }[] = [];
+
+  artifacts.forEach(a => {
+    a.levels.forEach((l, index) => {
+      if (l.components.some(component => component.family === family && component.level === level)) {
+        artifactsUsedIn.push({
+          name: `${l.prefix} ${a.name}`,
+          path: `/${a.family}/${index}`,
+        })
+      }
+    })
+  })
+
+  return artifactsUsedIn;
+}
