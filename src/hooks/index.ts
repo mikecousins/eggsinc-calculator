@@ -890,8 +890,8 @@ export const useArtifact = (family: Family) => {
   return artifacts.find(artifact => artifact.family === family);
 }
 
-export const useArtifactUsedIn = (family: Family, level: number) => {
-  const artifactsUsedIn: { name: string, path: string }[] = [];
+const findArtifactsUsedIn = (family: Family, level: number) => {
+  const artifactsUsedIn: { name: string, path: string, family: Family, level: number }[] = [];
 
   artifacts.forEach(a => {
     a.levels.forEach((l, index) => {
@@ -899,10 +899,35 @@ export const useArtifactUsedIn = (family: Family, level: number) => {
         artifactsUsedIn.push({
           name: `${l.prefix} ${a.name}`,
           path: `/${a.family}/${index}`,
+          family: a.family,
+          level: index,
         });
       }
     })
   })
+
+  return artifactsUsedIn;
+}
+
+export const useArtifactUsedIn = (family: Family, level: number) => {
+  const artifactsUsedIn: { name: string, path: string }[] = [];
+
+  const firstLevel = findArtifactsUsedIn(family, level);
+  firstLevel.forEach(firstArtifact => {
+    artifactsUsedIn.push(firstArtifact);
+    const secondLevel = findArtifactsUsedIn(firstArtifact.family, firstArtifact.level);
+    secondLevel.forEach(secondArtifact => {
+      artifactsUsedIn.push(secondArtifact);
+      const thirdLevel = findArtifactsUsedIn(secondArtifact.family, secondArtifact.level);
+      thirdLevel.forEach(thirdArtifact => {
+        artifactsUsedIn.push(thirdArtifact);
+        const fourthLevel = findArtifactsUsedIn(thirdArtifact.family, thirdArtifact.level);
+        fourthLevel.forEach(fourthArtifact => {
+          artifactsUsedIn.push(fourthArtifact);
+        })
+      })
+    });
+  });
 
   return artifactsUsedIn;
 }
