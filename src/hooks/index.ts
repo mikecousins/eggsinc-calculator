@@ -726,7 +726,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Perfect',
       effectPrefix: ['+14%'],
-      components: [],
+      components: [{
+        family: Family.QUANTUM_METRONOME,
+        level :1,
+        count: 7,
+      }, {
+        family: Family.MERCURYS_LENS,
+        level: 2,
+        count: 4,
+      }],
       consumed: undefined,
     }, {
       prefix: 'Reggference',
@@ -802,7 +810,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: '',
       effectPrefix: ['+4'],
-      components: [],
+      components: [{
+        family: Family.TITANIUM_ACTUATOR,
+        level: 0,
+        count: 4,
+      }, {
+        family: Family.SOLAR_TITANIUM,
+        level: 1,
+        count: 4,
+      }],
       consumed: undefined,
     }, {
       prefix: 'Precise',
@@ -851,7 +867,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Brilliant',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.TUNGSTEN_ANKH,
+        level: 2,
+        count: 8,
+      }, {
+        family: Family.GOLD_METEORITE,
+        level: 2,
+        count: 4,
+      }],
       consumed: undefined,
     }],
   },
