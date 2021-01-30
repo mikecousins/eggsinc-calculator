@@ -281,7 +281,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Eggceptional',
       effectPrefix: ['+??%', '+??%', '+??%', '+??%'],
-      components: [],
+      components: [{
+        family: Family.CHALICE,
+        level: 2,
+        count: 8,
+      }, {
+        family: Family.BEAK_OF_MIDAS,
+        level: 3,
+        count: 2,
+      }],
       consumed: undefined,
     }],
   },
