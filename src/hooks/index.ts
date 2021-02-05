@@ -121,7 +121,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Eggceptional',
       effectPrefix: ['2x', '?x', '?x', '?x'],
-      components: [],
+      components: [{
+        family: Family.AURELIAN_BROOCH,
+        level: 2,
+        count: 10,
+      }, {
+        family: Family.GOLD_METEORITE,
+        level: 2,
+        count: 3,
+      }],
       consumed: undefined,
     }],
   },
@@ -238,7 +246,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Meggnificent',
       effectPrefix: ['???'],
-      components: [],
+      components: [{
+        family: Family.CARVED_RAINSTICK,
+        level: 2,
+        count: 9,
+      }, {
+        family: Family.TAU_CETI_GEODE,
+        level: 2,
+        count: 2,
+      }],
       consumed: undefined,
     }],
   },
@@ -367,7 +383,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Eggsacting',
       effectPrefix: ['+14%'],
-      components: [],
+      components: [{
+        family: Family.DILITHIUM_MONOCLE,
+        level: 1,
+        count: 8,
+      }, {
+        family: Family.SOLAR_TITANIUM,
+        level: 2,
+        count: 2,
+      }],
       consumed: undefined,
     }, {
       prefix: 'Flawless',
@@ -410,7 +434,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: 'Jeweled',
-      effectPrefix: ['???'],
+      effectPrefix: ['+20%', '???', '???', '???'],
       components: [{
         family: Family.GUSSET,
         level: 2,
@@ -435,7 +459,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: '',
-      effectPrefix: ['+10%'],
+      effectPrefix: ['+10%', '???', '???', '???'],
       components: [{
         family: Family.INTERSTELLAR_COMPASS,
         level: 0,
@@ -444,7 +468,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: 'Precise',
-      effectPrefix: ['+20%'],
+      effectPrefix: ['+20%', '???', '???', '???'],
       components: [{
         family: Family.INTERSTELLAR_COMPASS,
         level: 1,
@@ -458,7 +482,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Clairvoyant',
       effectPrefix: ['???'],
-      components: [],
+      components: [{
+        family: Family.INTERSTELLAR_COMPASS,
+        level: 2,
+        count: 10,
+      }, {
+        family: Family.TAU_CETI_GEODE,
+        level: 2,
+        count: 4,
+      }],
       consumed: undefined,
     }],
   },
@@ -501,7 +533,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: '',
-      effectPrefix: ['2x', '2.5x'],
+      effectPrefix: ['+100%', '+150%', '+175%', '+200%'],
       components: [{
         family: Family.LUNAR_TOTEM,
         level: 0,
@@ -510,7 +542,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: 'Powerful',
-      effectPrefix: ['4x', '5x'],
+      effectPrefix: ['+300%', '+400%'],
       components: [{
         family: Family.LUNAR_TOTEM,
         level: 1,
@@ -519,7 +551,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: 'Eggceptional',
-      effectPrefix: ['6x'],
+      effectPrefix: ['+500%', '+700%'],
       components: [{
         family: Family.LUNAR_TOTEM,
         level: 2,
@@ -652,7 +684,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Brilliant',
       effectPrefix: ['5x'],
-      components: [],
+      components: [{
+        family: Family.PHOENIX_FEATHER,
+        level: 1,
+        count: 10,
+      }, {
+        family: Family.BOOK_OF_BASAN,
+        level: 1,
+        count: 2,
+      }],
       consumed: undefined,
     }, {
       prefix: 'Blazing',
@@ -668,12 +708,12 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     effect: "research cost",
     levels: [{
       prefix: 'Ancient',
-      effectPrefix: [],
+      effectPrefix: ['-5%'],
       components: [],
       consumed: undefined,
     }, {
       prefix: '',
-      effectPrefix: [],
+      effectPrefix: ['-10%', '???', '-15%', '???'],
       components: [{
         family: Family.PUZZLE_CUBE,
         level: 0,
@@ -682,7 +722,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: 'Mystical',
-      effectPrefix: [],
+      effectPrefix: ['-20%', '-22%'],
       components: [{
         family: Family.PUZZLE_CUBE,
         level: 1,
@@ -695,7 +735,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: 'Unsolvable',
-      effectPrefix: [],
+      effectPrefix: ['-50%', '-53%'],
       components: [{
         family: Family.PUZZLE_CUBE,
         level: 2,
@@ -720,7 +760,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
       consumed: undefined,
     }, {
       prefix: 'Adequate',
-      effectPrefix: ['+10%'],
+      effectPrefix: ['+10%', '+12%'],
       components: [{
         family: Family.QUANTUM_METRONOME,
         level: 0,
@@ -764,12 +804,28 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Detailed',
       effectPrefix: ['+30%'],
-      components: [],
+      components: [{
+        family: Family.SHIP_IN_A_BOTTLE,
+        level: 0,
+        count: 6,
+      }, {
+        family: Family.DEMETERS_NECKLACE,
+        level: 3,
+        count: 2,
+      }],
       consumed: undefined,
     }, {
       prefix: 'Complex',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.SHIP_IN_A_BOTTLE,
+        level: 1,
+        count: 9,
+      }, {
+        family: Family.SOLAR_TITANIUM,
+        level: 2,
+        count: 3,
+      }],
       consumed: undefined,
     }, {
       prefix: 'Eggquisite',
@@ -791,7 +847,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: '',
       effectPrefix: ['+8%'],
-      components: [],
+      components: [{
+        family: Family.TACHYON_DEFLECTOR,
+        level: 0,
+        count: 6,
+      }, {
+        family: Family.SHIP_IN_A_BOTTLE,
+        level: 1,
+        count: 2,
+      }],
       consumed: undefined,
     }, {
       prefix: 'Robust',
@@ -831,7 +895,15 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     }, {
       prefix: 'Precise',
       effectPrefix: [],
-      components: [],
+      components: [{
+        family: Family.TITANIUM_ACTUATOR,
+        level: 1,
+        count: 6,
+      }, {
+        family: Family.SOLAR_TITANIUM,
+        level: 2,
+        count: 3,
+      }],
       consumed: undefined,
     }, {
       prefix: 'Reggference',
