@@ -1088,7 +1088,7 @@ const artifacts: (Artifact | Ingredient | Stone)[] = [
     name: 'Quantum Stone',
     family: Family.QUANTUM_STONE,
     type: Type.STONE,
-    effect: 'shippin rate',
+    effect: 'shipping rate',
     levels: [{
       prefix: 'Fragment',
       effectPrefix: '+0%',
